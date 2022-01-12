@@ -9,6 +9,8 @@ import { ArticulosComponent } from './componentes/sitioComercial/articulos/artic
 import { ContactenosComponent } from './componentes/sitioComercial/contactenos/contactenos.component';
 import { NosotrosComponent } from './componentes/sitioComercial/nosotros/nosotros.component';
 import { ProductoComponent } from './componentes/sitioComercial/partials/producto/producto.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ProductoComponent } from './componentes/sitioComercial/partials/product
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
