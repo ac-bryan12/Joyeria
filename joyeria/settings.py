@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders'
+    'corsheaders',
+    'producto.apps.ProductoConfig'
 ]
 
 MIDDLEWARE = [
@@ -132,5 +133,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #config CORS
-CORS_ALLOWED_ORIGINS = 'http://localhost:4200'
+CORS_ALLOWED_ORIGINS = ['http://localhost:4200']
 
