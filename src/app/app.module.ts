@@ -10,7 +10,7 @@ import { ContactenosComponent } from './componentes/sitioComercial/contactenos/c
 import { NosotrosComponent } from './componentes/sitioComercial/nosotros/nosotros.component';
 import { ProductoComponent } from './componentes/sitioComercial/partials/producto/producto.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { LoginComponent } from './componentes/sitioComercial/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     ArticulosComponent,
     ContactenosComponent,
     NosotrosComponent,
-    ProductoComponent
+    ProductoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
