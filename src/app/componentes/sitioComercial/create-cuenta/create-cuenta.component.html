@@ -12,27 +12,27 @@
         (ngSubmit)="enviar(createAccount.value)">
             <h3>Crea tu cuenta!</h3>
             <div class="form-wrapper">
-                <input type="text" placeholder="Nombres" class="form-control">
+                <input type="text" formControlName="names" placeholder="Nombres" class="form-control">
                 <i class="bi bi-person"></i>
             </div>
             <div class="form-wrapper">
-                <input type="text" placeholder="Email Address" class="form-control">
+                <input type="text" formControlName="email" placeholder="Email Address" class="form-control">
                 <i class="bi bi-envelope"></i>
             </div>
             <div class="form-wrapper">
-                <input type="password" placeholder="Password" class="form-control">
+                <input type="password" formControlName="password" placeholder="Password" class="form-control">
                 <i class="bi bi-lock"></i>
             </div>
             <div class="form-wrapper">
-                <input type="password" placeholder="Confirm Password" class="form-control">
+                <input type="password" formControlName="confpassword" placeholder="Confirm Password" class="form-control">
                 <i class="bi bi-lock"></i>
             </div>
             <div class="form-wrapper">
-                <input type="text" placeholder="Dirección" class="form-control">
+                <input type="text" formControlName="direccion" placeholder="Dirección" class="form-control">
                 <i class="bi bi-geo-alt"></i>
             </div>
             <div class="form-wrapper">
-                <input type="number" placeholder="Teléfono" max="10" class="form-control">
+                <input type="number" formControlName="telefono" placeholder="Teléfono" max="10" class="form-control">
                 <i class="bi bi-telephone"></i>
             </div>
 
