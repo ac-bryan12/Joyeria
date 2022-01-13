@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'producto.apps.ProductoConfig'
+    'producto.apps.ProductoConfig',
+    'authenticate.apps.AuthenticateConfig',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
