@@ -4,20 +4,20 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
-                  <li class="nav-item"><a class="nav-link" routerLink="nosotros">Sobre nosotros</a></li>
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/nosotros']">Sobre nosotros</a></li>
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li class="nav-item dropend">
                               <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Todos los productos</a>
                               <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                  <li><a class="dropdown-item" routerLink = "articulos" [queryParams]="{name:'anillos'}">Anillos</a></li>
-                                  <li><a class="dropdown-item" routerLink = "articulos" [queryParams]="{name:'aretes'}">Aretes</a></li>
-                                  <li><a class="dropdown-item" routerLink = "articulos" [queryParams]="{name:'cadenas'}">Cadenas</a></li>
-                                  <li><a class="dropdown-item" routerLink = "articulos" [queryParams]="{name:'joyeros'}">Joyeros</a></li>
-                                  <li><a class="dropdown-item" routerLink = "articulos" [queryParams]="{name:'piercings_falsos'}">Piercings Falsos</a></li>
-                                  <li><a class="dropdown-item" routerLink = "articulos" [queryParams]="{name:'pulseras'}">Pulseras</a></li>
-                                  <li><a class="dropdown-item" routerLink = "articulos" [queryParams]="{name:'relojes'}">Relojes</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'anillos'}">Anillos</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'aretes'}">Aretes</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'cadenas'}">Cadenas</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'joyeros'}">Joyeros</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'piercings_falsos'}">Piercings Falsos</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'pulseras'}">Pulseras</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'relojes'}">Relojes</a></li>
                               </ul>
                           </li>
                           <li><hr class="dropdown-divider" /></li>
@@ -26,7 +26,7 @@
                           <li><a class="dropdown-item" href="pestannas/nuevaColeccion.html">Promociones</a></li>
                       </ul>
                   </li>
-                  <li class="nav-item"><a class="nav-link" routerLink="contactenos">Contáctanos</a></li>
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/contactenos']">Contáctanos</a></li>
               </ul>
               <form class="d-flex">
                   <a class="btn btn-outline-dark" routerLink="login">

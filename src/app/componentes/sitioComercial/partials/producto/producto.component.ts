@@ -29,10 +29,16 @@ export class ProductoComponent implements OnInit, OnChanges {
     })
   }
 
-  filtrarProductos(valor:any){
-    let lista = document.querySelectorAll("h5[class='fw-bolder']")
-    console.log(lista)
-    //falta realizar
+  filtrarProductos(valor:HTMLInputElement){
+    let cards = document.querySelectorAll("div[class*='col mb-5']")
+    for(let i = 0;i<this.productos.length;i++){
+      if(!this.productos[i].nombre.toLowerCase().includes(valor.value.toLowerCase())){
+        cards.item(i).classList.add("d-none")
+      }
+      else{
+        cards.item(i).classList.remove("d-none")
+      }
+    } 
   }
 
 }
