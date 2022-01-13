@@ -1,13 +1,13 @@
-<header class="bg-dark py-5 " style="background:url('...');background-repeat:no-repeat;background-size: cover;background-position: center;">
+<header class="bg-dark py-5 {{titulo}}">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">{{titulo}}</h1>
+            <h1 class="display-4 fw-bolder">{{titulo.toUpperCase()}}</h1>
         </div>
     </div>
 </header>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-        <div class="d-flex justify-content-rigth">
+        <div class="busqueda">
             <input #input type="text">
             <button class ="btn btn-outline-dark" (click) = "filtrarProductos(input)">Buscar</button>
         </div>
@@ -15,7 +15,7 @@
             <div class="col mb-5" *ngFor='let producto of productos'>
                 <div class="card h-100" >
                     <!-- Product image-->
-                    <img class="card-img-top" src="{{producto.image_url}}" alt="..." />
+                    <img class="card-img-top" src="{{producto.image_url}}" alt="producto" />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">

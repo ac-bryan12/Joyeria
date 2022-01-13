@@ -1,3 +1,70 @@
 .card-img-top{
     max-height: 220px;
+    min-height: 220px;
 }
+
+div[class="card h-100"]:hover{
+    -webkit-transform:scale(1.1);transform:scale(1.1);
+}
+div[class="card h-100"]{
+    overflow: hidden;
+}
+
+.busqueda{
+    display: flex;
+    justify-content: flex-end;
+    top:-50px;
+    position:relative
+}
+input{
+    width: 350px;
+    border-style: solid;
+    border-radius: 5px;
+}
+.anillos{
+    background:url('https://wallpaperaccess.com/full/2149573.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.aretes{
+    background:url('http://cdn.shopify.com/s/files/1/0031/8518/0772/collections/banner_aretes2.jpg?v=1612827060');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.cadenas{
+    background:url('https://cdn.shopify.com/s/files/1/0490/7633/8841/files/banner_youtue_6d67461f-8bd3-4cc2-848b-0113339daba6.jpg?v=1613644626');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.joyeros{
+    background:url('https://cdn.shopify.com/s/files/1/0490/7633/8841/files/banner_youtue_6d67461f-8bd3-4cc2-848b-0113339daba6.jpg?v=1613644626');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.piercings-falsos{
+    background:url('https://static.vivajolie.com.br/media/catalog/category/piercings.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.pulseras{
+    background:url('https://cdn.shopify.com/s/files/1/0579/0554/5394/files/banner-13_1800x.png?v=1637254329');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.relojes{
+    background:url('https://salaguamotors.com/wp-content/uploads/2021/09/Breitling-IWC_opener_LG-758x431.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+

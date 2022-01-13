@@ -18,10 +18,9 @@ export class ArticulosComponent implements OnInit {
 
   opcion(){
     let title = this.router.parseUrl(this.router.url).queryParams["name"]
-    this.titulo = title.toUpperCase()
-    console.log(this.titulo)
+    this.titulo = title
     if(title == "piercings_falsos"){
-      this.titulo = this.titulo.replace("_"," ")
+      this.titulo = this.titulo.replace("_","-")
     }
     this.url = "http://localhost:8000/api/articulos?categoria="+title
     
