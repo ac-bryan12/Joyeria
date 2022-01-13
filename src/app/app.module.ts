@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InicioComponent } from './componentes/sitioComercial/inicio/inicio.component';
 import { NavbarComponent } from './componentes/sitioComercial/partials/navbar/navbar.component';
 import { ArticulosComponent } from './componentes/sitioComercial/articulos/articulos.component';
@@ -27,6 +28,8 @@ import { LoginComponent } from './componentes/sitioComercial/login/login.compone
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

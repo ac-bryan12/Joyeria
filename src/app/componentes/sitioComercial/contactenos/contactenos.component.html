@@ -2,7 +2,8 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">¿Dónde y Cómo encontrarnos?</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Hola, a continuacion podrás ponerte en contacto con nosotros.</p>
+            <p class="lead fw-normal text-white-50 mb-0">Hola, a continuacion podrás ponerte en contacto con nosotros.
+            </p>
         </div>
     </div>
 </header>
@@ -21,145 +22,149 @@
                             width="500" height="610" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <div id="formulario" class="mx-2">
-                        <form>
-                                    <div class="row">
-                                       <!--First Name-->
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label text-dark" for="firstNameLabel" >Nombres y Apellidos<span
-                                                        class="text-danger">*</span></label>
-                                                <div class="input-group mb-4">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="bi bi-person-circle"></i></span>
-                                                    </div>
-                                                    <input class="form-control" id="firstNameLabel" placeholder="Nombres"
-                                                        type="text"  formControlName = "first_name" required>
-                                                </div>
+                        <form #form
+                        [formGroup]="contactoForm"
+                        autocomplete="off"
+                        novalidate
+                        #formRef="ngForm"> 
+                            <div class="row">
+                                <!--First Name-->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label text-dark" for="firstNameLabel">Nombres y
+                                            Apellidos<span class="text-danger">*</span></label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i
+                                                        class="bi bi-person-circle"></i></span>
                                             </div>
-                                        </div>
-
-                                        <!--Phone Number-->
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label text-dark" for="phonenumberLabel">Teléfono<span
-                                                        class="text-danger">*</span></label>
-                                                <div class="input-group mb-4">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="bi bi-telephone-fill"></i></span>
-                                                    </div>
-                                                    <input class="form-control"  formControlName ="phone" id="phonenumberLabel"
-                                                        placeholder="(+593) 99-999-9999" type=  "number" required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--Email-->
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label text-dark" for="EmailLabel">Email <span
-                                                        class="text-danger">*</span></label>
-                                                <div class="input-group mb-4">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="bi bi-envelope-fill"></i></span>
-                                                    </div>
-                                                    <input class="form-control" id="EmailLabel"
-                                                        placeholder="name-email@company.com" type="email" formControlName="email" required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--Last Name-->
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label text-dark" for="lastNameLabel">Fecha Nacimiento<span
-                                                        class="text-danger">*</span></label>
-                                                <div class="input-group mb-4">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="bi bi-calendar-date-fill"></i></span>
-                                                    </div>
-                                                    <input class="form-control" id="lastNameLabel" placeholder="Doe"
-                                                        formControlName="last_name" type="date" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <!--Lugar de Origen-->
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label text-dark" for="lastNameLabel">Lugar
-                                                    Origen<span class="text-danger">*</span></label>
-                                                <div class="input-group mb-4">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
-                                                    </div>
-                                                    <select name="contactForm.city" class="form-control" formControlName="city">
-                                                        <option disabled selected>Selecciona una opción</option>
-                                                        <option value="value1">Azuay</option>
-                                                        <option value="value1">Bolívar</option>
-                                                        <option value="value1">Azogues</option>
-                                                        <option value="value1">Cañar</option>
-                                                        <option value="value1">Carchi</option>
-                                                        <option value="value1">Chimborazo</option>
-                                                        <option value="value1">Cotopaxi</option>
-                                                        <option value="value1">El Oro</option>
-                                                        <option value="value1">Esmeraldas</option>
-                                                        <option value="value1">Galápagos</option>
-                                                        <option value="value1">Guayas</option>
-                                                        <option value="value1">Imbabura</option>
-                                                        <option value="value1">Loja</option>
-                                                        <option value="value1">Los Ríos</option>
-                                                        <option value="value1">Manabí</option>
-                                                        <option value="value1">Morona Santiago</option>
-                                                        <option value="value1">Napo</option>
-                                                        <option value="value1">Orellana</option>
-                                                        <option value="value1">Pastaza</option>
-                                                        <option value="value1">Pichincha</option>
-                                                        <option value="value1">Santa Elena</option>
-                                                        <option value="value1">Santo Domingo de los Tsáchilas</option>
-                                                        <option value="value1">Sucumbios</option>
-                                                        <option value="value1">Zamora Chinchipe</option>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Tema a tratar-->
-                                        <div class="col-12 col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label text-dark" for="TemaLabel">Asunto <span
-                                                        class="text-danger">*</span></label>
-                                                <div class="input-group mb-2">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="bi bi-inbox-fill"></i></span>
-                                                    </div>
-                                                    <input class="form-control" id="TemaLabel"
-                                                        placeholder="Tema a consultar" type="email" formControlName ="topic" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Detalle-->
-                                        <div class="col-12 mt-4">
-                                            <div class="form-group">
-                                                <label class="form-label text-dark" for="phonenumberLabel">Detalle<span
-                                                        class="text-danger">*</span></label>
-                                                <textarea class="form-control" placeholder="Hola, me gustaria saber como..."
-                                                    id="message-2" rows="8" required formControlName ="detail"></textarea>
-                                            </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-secondary mt-4 animate-up-2">
-                                                    <span class="mr-2">
-                                                        <i class="bi bi-send-check-fill me-2"></i>
-                                                    </span>Enviar
-                                                </button>
-                                            </div>
+                                            <input class="form-control" id="firstNameLabel" placeholder="Nombres"
+                                                type="text" formControlName="names" required>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
+
+                                <!--Phone Number-->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label text-dark" for="phonenumberLabel">Teléfono<span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i
+                                                        class="bi bi-telephone-fill"></i></span>
+                                            </div>
+                                            <input class="form-control" formControlName="phone" id="phonenumberLabel"
+                                                placeholder="(+593) 99-999-9999" type="number" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Email-->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label text-dark" for="EmailLabel">Email <span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i
+                                                        class="bi bi-envelope-fill"></i></span>
+                                            </div>
+                                            <input class="form-control" id="EmailLabel"
+                                                placeholder="name-email@company.com" type="email"
+                                                formControlName="email" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Last Name-->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label text-dark" for="DateLabel">Fecha Nacimiento<span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i
+                                                        class="bi bi-calendar-date-fill"></i></span>
+                                            </div>
+                                            <input class="form-control" id="DateLabel" placeholder="Doe"
+                                                formControlName="born_date" type="date" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Lugar de Origen-->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label text-dark">Lugar
+                                            Origen<span class="text-danger">*</span></label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                                            </div>
+                                            <select name="contactForm.city" class="form-control" formControlName="city">
+                                                <option disabled selected>Selecciona una opción</option>
+                                                <option value="value1">Azuay</option>
+                                                <option value="value1">Bolívar</option>
+                                                <option value="value1">Azogues</option>
+                                                <option value="value1">Cañar</option>
+                                                <option value="value1">Carchi</option>
+                                                <option value="value1">Chimborazo</option>
+                                                <option value="value1">Cotopaxi</option>
+                                                <option value="value1">El Oro</option>
+                                                <option value="value1">Esmeraldas</option>
+                                                <option value="value1">Galápagos</option>
+                                                <option value="value1">Guayas</option>
+                                                <option value="value1">Imbabura</option>
+                                                <option value="value1">Loja</option>
+                                                <option value="value1">Los Ríos</option>
+                                                <option value="value1">Manabí</option>
+                                                <option value="value1">Morona Santiago</option>
+                                                <option value="value1">Napo</option>
+                                                <option value="value1">Orellana</option>
+                                                <option value="value1">Pastaza</option>
+                                                <option value="value1">Pichincha</option>
+                                                <option value="value1">Santa Elena</option>
+                                                <option value="value1">Santo Domingo de los Tsáchilas</option>
+                                                <option value="value1">Sucumbios</option>
+                                                <option value="value1">Zamora Chinchipe</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Tema a tratar-->
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label text-dark" for="TemaLabel">Asunto <span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="bi bi-inbox-fill"></i></span>
+                                            </div>
+                                            <input class="form-control" id="TemaLabel" placeholder="Tema a consultar"
+                                                type="email" formControlName="topic" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Detalle-->
+                                <div class="col-12 mt-4">
+                                    <div class="form-group">
+                                        <label class="form-label text-dark" for="detalleLabel">Detalle<span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" placeholder="Hola, me gustaria saber como..."
+                                            id="message-2" rows="8" required formControlName="detail"></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-secondary mt-4 animate-up-2">
+                                            <span class="mr-2">
+                                                <i class="bi bi-send-check-fill me-2"></i>
+                                            </span>Enviar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="card-footer">
