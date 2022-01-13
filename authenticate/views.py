@@ -1,3 +1,4 @@
+from correo.views import RegisterView
 from rest_framework import authentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -48,6 +49,7 @@ class User(APIView):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
+            RegisterView.send_mail(request.data["email"],{'nombre':request.data["first_name"]+" "+request.data["last_name"]},"Creación de cuenta","envioCorreo.html")
             return Response({"msg":"Usuario creado con éxito"})
 
 
