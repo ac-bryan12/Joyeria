@@ -1,0 +1,32 @@
+<div>
+    <div>
+        <h1>Productos</h1>
+    </div>
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Promocion</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of productos">
+                <th scope="row">{{producto.id}}</th>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.categoria.nombre}}</td>
+                <td>{{producto.precio}}</td>
+                <td>{{producto.promocion!=null ? producto.promocion : "-----------"}}</td>
+                <td>
+                    <button value="{{producto.id}}" (click)="modificarProducto(producto)"><i  class="bi bi-pencil-square"></i></button>
+                    <button value="{{producto.id}}" (click)="eliminarProducto(producto.id)" ><i  class="bi bi-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

@@ -13,6 +13,10 @@ import { ProductoComponent } from './componentes/sitioComercial/partials/product
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './componentes/sitioComercial/login/login.component';
 import { CreateCuentaComponent } from './componentes/sitioComercial/create-cuenta/create-cuenta.component';
+import { PortalComponent } from './componentes/admin/portal/portal.component';
+import { CookieService } from 'ngx-cookie-service';
+import { ListProductsComponent } from './componentes/admin/list-products/list-products.component';
+import { AddModifyProductComponent } from './componentes/admin/add-modify-product/add-modify-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { CreateCuentaComponent } from './componentes/sitioComercial/create-cuent
     NosotrosComponent,
     ProductoComponent,
     LoginComponent,
-    CreateCuentaComponent
+    CreateCuentaComponent,
+    PortalComponent,
+    ListProductsComponent,
+    AddModifyProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,7 @@ import { CreateCuentaComponent } from './componentes/sitioComercial/create-cuent
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
