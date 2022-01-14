@@ -14,3 +14,4 @@ class Articulo(models.Model):
     promocion = models.DecimalField(max_digits=10 ,decimal_places=2,null=True)
     precio = models.DecimalField(max_digits=10 ,decimal_places=2)
     proveedor = models.ForeignKey(Proveedor,on_delete=models.SET_NULL,null=True)
+    stock = models.IntegerField(default=5)

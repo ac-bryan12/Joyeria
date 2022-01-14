@@ -32,7 +32,7 @@ class Logout(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = [permissions.IsAuthenticated]
     
-    def post(self,request):
+    def get(self,request):
         request.user.auth_token.delete()
         data = {"estado": "SESION_TERMINADA"}
         return Response(data, status=status.HTTP_200_OK)
