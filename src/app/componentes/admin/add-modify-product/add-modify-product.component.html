@@ -1,16 +1,16 @@
 <div>
     <div>
-        <h1>Agregar/Modificar Producto</h1>
+        <h1>{{title}}</h1>
     </div>
     <div class="">
-        <form [formGroup]="product_form" #formRef="ngForm" class="form-card col-10 m-5" (ngSubmit)="enviar()">
+        <form [formGroup]="product_form" #formRef="ngForm" class="form-card col-10 m-5" (ngSubmit)="enviar(product_form.value)">
             <div class="row justify-content-between text-left">
                 <div class="form-group col-sm-6 flex-column d-flex">
                     <label class="form-control-label px-3" for="nombre">
                         Nombre
                         <span class="text-danger"> *</span>
                     </label> 
-                    <input type="text" formControlName="nombre" name="nombre" placeholder="Nombre"> 
+                    <input type="text" formControlName="nombre" name="nombre" > 
                 </div>
                 <div class="form-group col-sm-6 flex-column d-flex"> 
                     <label class="form-control-label px-3" for="categoria">
@@ -18,7 +18,7 @@
                         <span class="text-danger"> *</span>
                     </label> 
                     <select formControlName="categoria" name="categoria" >
-                        <option value="prueba"></option>
+                        <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
                     </select>
                 </div>
             </div>
@@ -28,14 +28,27 @@
                         precio
                         <span class="text-danger"> *</span>
                     </label> 
-                    <input type="text" formControlName="precio" name="precio" placeholder="precio" > 
+                    <input type="text" formControlName="precio" name="precio"  > 
                 </div>
                 <div class="form-group col-sm-6 flex-column d-flex"> 
                     <label class="form-control-label px-3" for="promocion">
                         promocion
                         <span class="text-danger"> *</span>
+                    </label>
+                    <div>
+                        <input #checkbox type="checkbox" (change)="changePromocion(input_promocion,checkbox)" checked>
+                        <input #input_promocion class="disabled" type="text" formControlName="promocion" name="promocion"> 
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex"> 
+                    <label class="form-control-label px-3" for="stock">
+                        stock
+                        <span class="text-danger"> *</span>
                     </label> 
-                    <input type="text" formControlName="promocion" name="promocion" placeholder="promocion"> 
+                    <input type="number" formControlName="stock" name="stock" > 
                 </div>
             </div>
 
@@ -45,7 +58,7 @@
                         url de la imagen
                         <span class="text-danger"> *</span>
                     </label> 
-                    <input type="url" formControlName="image_url" name="url_img" placeholder="url"> 
+                    <input type="url" formControlName="image_url" name="url_img" > 
                 </div>
             </div>
             <div class="row justify-content-end">
