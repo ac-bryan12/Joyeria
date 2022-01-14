@@ -2,6 +2,7 @@ import re
 from django.db.models import query
 from django.db.models.query import QuerySet
 from rest_framework import status,permissions
+from rest_framework import authentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Articulo, Categoria, Proveedor
@@ -10,6 +11,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.parsers import JSONParser
 
 class Articulos(APIView):
+    authentication_classes = (TokenAuthentication,)
     
     def get(self, request):
         args = {}
