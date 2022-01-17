@@ -39,11 +39,14 @@ class Logout(APIView):
         return Response(data, status=status.HTTP_200_OK)
 
 
-class User(APIView):
+class UserView(APIView):
+    authentication_classes = (TokenAuthentication,)
     
     def get(self,request):
-        serializer = UserSerializer(User.objects.all(),many=True)
-        return Response(serializer.data)
+        if request.user.is_authenticated:
+            serializer = UserSerializer(request.user)
+            return Response(serializer.data)
+        return Response({"error":"No autorizado"},status=status.HTTP_401_UNAUTHORIZED)
     
     def post(self,request):
         serializer = UserSerializer(data=request.data)

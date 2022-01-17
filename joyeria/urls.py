@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from authenticate.views import UserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("auth/",include("authenticate.urls")),
     path("api/",include("producto.urls")),
-    path("auth/",include("authenticate.urls"))
+    path("api/user/",UserView.as_view()),
+    path("api/shop/",include("shop.urls"))
 ]

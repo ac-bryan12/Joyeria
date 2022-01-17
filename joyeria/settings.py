@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'producto.apps.ProductoConfig',
     'authenticate.apps.AuthenticateConfig',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'shop.apps.ShopConfig'
 ]
 
 MIDDLEWARE = [

@@ -100,6 +100,7 @@ class Migration(migrations.Migration):
                 ('precio', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('categoria', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='producto.categoria')),
                 ('proveedor', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='producto.proveedor')),
+                ('stock',models.IntegerField(default=5))
             ],
         ),
         migrations.RunPython(insert_data),
