@@ -53,21 +53,21 @@ class ShopView(APIView):
             return Response({"error":"No agregó porductos al carrito o ya no están disponibles."})
         
 
-class ReporteCompras(APIView):
+#class GraficoCompras(APIView):
     
-    def get(self,request):
-        results = []
-        for i in range(12):
-            pedidos = Pedido.objects.filter(fechaCompra__month=i+1)
-            cantidad = 0
-            for pedido in pedidos:
-                detalles = DetallesPedido.objects.filter(pedido=pedido)
-                for detalle in detalles:
-                    cantidad += detalle.cantidadSolicitada
-            res_mes = {
-                "mes" : i+1,
-                "cantidad" : cantidad
-            }
-            results.append(res_mes)
-        return Response({"data":results})
+    # def get(self,request):
+    #     results = []
+    #     for i in range(12):
+    #         pedidos = Pedido.objects.filter(fechaCompra__month=i+1)
+    #         cantidad = 0
+    #         for pedido in pedidos:
+    #             detalles = DetallesPedido.objects.filter(pedido=pedido)
+    #             for detalle in detalles:
+    #                 cantidad += detalle.cantidadSolicitada
+    #         res_mes = {
+    #             "mes" : i+1,
+    #             "cantidad" : cantidad
+    #         }
+    #         results.append(res_mes)
+    #     return Response({"data":results})
         

@@ -22,5 +22,6 @@ urlpatterns = [
     path("auth/",include("authenticate.urls")),
     path("api/",include("producto.urls")),
     path("api/user/",UserView.as_view()),
-    path("api/shop/",include("shop.urls"))
+    path("api/shop/",include("shop.urls")),
+    path("api/",include("graficos.urls")),
 ]

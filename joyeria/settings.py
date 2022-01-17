@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'producto.apps.ProductoConfig',
     'authenticate.apps.AuthenticateConfig',
     'rest_framework.authtoken',
-    'shop.apps.ShopConfig'
+    'shop.apps.ShopConfig',
+    'graficos.apps.GraficosConfig',
 ]
 
 MIDDLEWARE = [
