@@ -17,6 +17,9 @@ import { PortalComponent } from './componentes/admin/portal/portal.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ListProductsComponent } from './componentes/admin/list-products/list-products.component';
 import { AddModifyProductComponent } from './componentes/admin/add-modify-product/add-modify-product.component';
+import { CarritoComponent } from './componentes/sitioComercial/carrito/carrito.component';
+import { ReportesComponent } from './componentes/admin/reportes/reportes.component';
+import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria/reporte-categoria.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { AddModifyProductComponent } from './componentes/admin/add-modify-produc
     PortalComponent,
     ListProductsComponent,
     AddModifyProductComponent,
+    CarritoComponent,
+    ReportesComponent,
+    ReporteCategoriaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+.contenedores-datos{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.clave{
+    font-weight: bold;
+}
