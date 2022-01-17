@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'producto.apps.ProductoConfig',
     'authenticate.apps.AuthenticateConfig',
+    'graficos.apps.GraficosConfig',
     'rest_framework.authtoken'
 ]
 
