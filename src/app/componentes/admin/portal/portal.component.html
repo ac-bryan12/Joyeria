@@ -1,0 +1,66 @@
+<div id="dashboard-container-all" class="vh-100 w-100">
+  <header class="w-100 bg-dark row">
+    <div class="col text-start">
+      <a class="icon-color" [routerLink]="['/portal']">Administración</a>
+    </div>
+    <div class="col text-end">
+      <i class="icon-color bi bi-list mx-3" (click)="colapsar()"></i>
+    </div>
+  </header>
+  <section id="main-container" class="row w-100">
+    <nav class="wi-200" class="col-8 col-sm-4 col-lg-3 col-xl-2 bg-dark">
+      <!-- List-items-menu -->
+      <div id="nav-section-container" class="h-100">
+        <!-- Nav items -->
+        <div>
+          <div class="sb-sidenav-menu-heading">Dashboard</div>
+          <a class="nav-link collapsed" (click)="submenu(sub_producto,icon_producto)" href="#" data-bs-toggle="collapse"
+            data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+            <i class="left-icon-nav bi bi-bag-check-fill"></i>
+            Productos
+            <i #icon_producto class="right-icon-nav bi bi-caret-right-fill"></i>
+          </a>
+          <div #sub_producto class="nav-sublink d-none">
+            <a class="nav-link collapsed" [routerLink]="['/portal/all_products']" data-bs-toggle="collapse"
+              data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+              Todos los productos
+            </a>
+            <a class="nav-link collapsed" [routerLink]="['/portal/add_product']" data-bs-toggle="collapse"
+              data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+              Agregar producto
+            </a>
+          </div>
+
+          <a class="nav-link collapsed" (click)="submenu(sub_reporte,icon_reporte)" data-bs-toggle="collapse"
+            data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+            <i class="left-icon-nav bi bi-bar-chart-line-fill"></i>
+            Reportes
+            <i #icon_reporte class="right-icon-nav bi bi-caret-right-fill"></i>
+          </a>
+          <div #sub_reporte class="nav-sublink d-none">
+            <a class="nav-link collapsed" [routerLink]="['/portal/reportesFecha']" data-bs-toggle="collapse"
+              data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+              Reporte por Fecha
+            </a>
+            <a class="nav-link collapsed" [routerLink]="['/portal/reportesCategorias']" data-bs-toggle="collapse"
+              data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+              Reporte por Categoria
+            </a>
+          </div>
+
+        </div>
+        <div>
+          <a class="nav-link collapsed mb-4" (click)="logout()">
+            <i class="left-icon-nav bi bi-power"></i>
+            logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="dashboard-content" class="col">
+      <router-outlet></router-outlet>
+    </section>
+  </section>
+
+</div>
