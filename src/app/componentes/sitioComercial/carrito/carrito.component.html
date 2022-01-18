@@ -6,18 +6,18 @@
     </div>
 </header>
 <div class="container pt-4">
-    <div class="row">
+    <div *ngFor="let producto of productos" class="row">
         <div class="col">
             <div class="row mb-2">
                 <div class="col-4 text-center">
                     <img class="img-fluid rounded"
-                        src="" alt="Producto"/>
+                        src="{{producto.image_url}}" alt="Producto"/>
                 </div>
                 <div class="col-6 border border-light border-3">
-                    <h3> Nombre Articulo</h3>
+                    <h3>{{producto.nombre}}</h3>
                     <div class="contenedores-datos">
                         <p class="clave me-2">Precio: </p>
-                        <p>Dato</p>
+                        <p>${{producto.precio}}</p>
                     </div>
                     <div class="contenedores-datos">
                         <p class="clave me-2">Entrega: </p>

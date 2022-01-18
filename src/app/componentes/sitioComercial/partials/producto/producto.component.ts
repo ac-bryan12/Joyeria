@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { PeticionesService } from 'src/app/services/requests/peticiones.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ProductoComponent implements OnInit, OnChanges {
   @Input() titulo: any
   
   productos : any = []
-  constructor(private service:PeticionesService, private router:Router) { }
+  constructor(private service:PeticionesService, private router:Router,private cookieService:CookieService) { }
 
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -39,6 +40,34 @@ export class ProductoComponent implements OnInit, OnChanges {
         cards.item(i).classList.remove("d-none")
       }
     } 
+  }
+
+  agregarProducto(id:any){
+    let carrito_count:any = document.querySelector("#navbarSupportedContent span.badge.bg-dark.text-white.ms-1.rounded-pill")
+    let productos:any[]
+    if (this.cookieService.check("carrito")){
+      productos = JSON.parse(this.cookieService.get("carrito"))
+      for (let producto of productos){
+        if (id == producto.id ){
+          return
+        }
+      }
+      
+      productos.push({
+        id: id,
+        amount: 1
+      })
+      this.cookieService.set("carrito",JSON.stringify(productos),{path:"/"})
+    }else{
+      productos = [{
+        id: id,
+        amount: 1
+      }]
+      this.cookieService.set("carrito",JSON.stringify(productos),{path:"/"})
+    }
+
+    carrito_count.textContent =  productos.length
+  
   }
 
 }
