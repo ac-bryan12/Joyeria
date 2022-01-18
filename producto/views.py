@@ -83,3 +83,15 @@ class Categorias(APIView):
     def get(self,request):
         serializer = CategoriaSerializer(Categoria.objects.all(),many=True)
         return Response(serializer.data)
+
+
+class ArticuloInfo(APIView):
+    
+    def get(self,request,id):
+        producto = Articulo.objects.filter(pk=id)
+        if producto.exists():
+            producto = producto.get()
+            serializer = ArticuloSerializer(producto)
+            return Response(serializer.data)
+        
+        return Response({"error":"Producto no existe"})
