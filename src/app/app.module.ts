@@ -20,6 +20,7 @@ import { AddModifyProductComponent } from './componentes/admin/add-modify-produc
 import { CarritoComponent } from './componentes/sitioComercial/carrito/carrito.component';
 import { ReportesComponent } from './componentes/admin/reportes/reportes.component';
 import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria/reporte-categoria.component';
+import { GraficosComponent } from './componentes/sitioComercial/partials/graficos/graficos.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria
     AddModifyProductComponent,
     CarritoComponent,
     ReportesComponent,
-    ReporteCategoriaComponent
+    ReporteCategoriaComponent,
+    GraficosComponent
   ],
   imports: [
     BrowserModule,
