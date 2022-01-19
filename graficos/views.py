@@ -7,6 +7,7 @@ from producto.serializers import ArticuloSerializer
 from shop.models import DetallesPedido, Pedido
 
 # Create your views here.
+lista = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
 
 class GraficoPrecio(APIView):
     permission_classes = [permissions.AllowAny]
@@ -36,7 +37,6 @@ class GraficoCategorias(APIView):
 
 
 class GraficoCompras(APIView):
-    
     def get(self,request):
         results = []
         for i in range(12):
@@ -47,7 +47,7 @@ class GraficoCompras(APIView):
                 for detalle in detalles:
                     cantidad += detalle.cantidadSolicitada
             res_mes = {
-                "mes" : i+1,
+                "mes" : lista[i],
                 "cantidad" : cantidad
             }
             results.append(res_mes)
