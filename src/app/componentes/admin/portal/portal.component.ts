@@ -8,11 +8,14 @@ import { PeticionesService } from 'src/app/services/requests/peticiones.service'
   styleUrls: ['./portal.component.css']
 })
 export class PortalComponent implements OnInit {
+  admin=false
+  cliente =false
 
   constructor(private service:PeticionesService,private router:Router) { }
 
   ngOnInit(): void {
     document.getElementsByTagName('navbar')[0].classList.toggle("d-none")
+    this.verificarGrupo()
   }
 
   logout(){
@@ -30,6 +33,18 @@ export class PortalComponent implements OnInit {
   submenu(submenu:any,icon:any){
     submenu.classList.toggle("d-none")
     icon.classList.toggle('rotate-icon')
+  }
+
+
+  verificarGrupo(){
+    this.service.peticionGet("http://localhost:8000/auth/user_credentials/",true).subscribe(res=>{
+      if(res.group=="admin"){
+        this.admin = true
+      }
+      else{
+        this.cliente =true
+      }
+    })
   }
 
 }

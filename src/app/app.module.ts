@@ -21,6 +21,8 @@ import { CarritoComponent } from './componentes/sitioComercial/carrito/carrito.c
 import { ReportesComponent } from './componentes/admin/reportes/reportes.component';
 import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria/reporte-categoria.component';
 import { GraficosComponent } from './componentes/sitioComercial/partials/graficos/graficos.component';
+import { PerfilComponent } from './componentes/admin/perfil/perfil.component';
+import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { GraficosComponent } from './componentes/sitioComercial/partials/grafico
     CarritoComponent,
     ReportesComponent,
     ReporteCategoriaComponent,
-    GraficosComponent
+    GraficosComponent,
+    PerfilComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddModifyProductComponent } from './componentes/admin/add-modify-product/add-modify-product.component';
 import { ListProductsComponent } from './componentes/admin/list-products/list-products.component';
+import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
+import { PerfilComponent } from './componentes/admin/perfil/perfil.component';
 import { PortalComponent } from './componentes/admin/portal/portal.component';
 import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria/reporte-categoria.component';
 import { ReportesComponent } from './componentes/admin/reportes/reportes.component';
@@ -26,7 +28,9 @@ const routes: Routes = [
         {path:'add_product',component:AddModifyProductComponent},
         {path:'modify_product',component:AddModifyProductComponent},
         {path:'reportesFecha',component:ReportesComponent},
-        {path:'reportesCategorias',component:ReporteCategoriaComponent}
+        {path:'reportesCategorias',component:ReporteCategoriaComponent},
+        {path:'perfil',component:PerfilComponent},
+        {path:'pedidos',component:PedidosComponent}
       ]
     },
     {path: 'shopping-cart',component:CarritoComponent}

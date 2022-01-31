@@ -14,7 +14,7 @@
         <!-- Nav items -->
         <div>
           <div class="sb-sidenav-menu-heading">Dashboard</div>
-          <a class="nav-link collapsed" (click)="submenu(sub_producto,icon_producto)" href="#" data-bs-toggle="collapse"
+          <a *ngIf ="admin" class="nav-link collapsed" (click)="submenu(sub_producto,icon_producto)" href="#" data-bs-toggle="collapse"
             data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
             <i class="left-icon-nav bi bi-bag-check-fill"></i>
             Productos
@@ -31,7 +31,7 @@
             </a>
           </div>
 
-          <a class="nav-link collapsed" (click)="submenu(sub_reporte,icon_reporte)" data-bs-toggle="collapse"
+          <a *ngIf ="admin" class="nav-link collapsed" (click)="submenu(sub_reporte,icon_reporte)" data-bs-toggle="collapse"
             data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
             <i class="left-icon-nav bi bi-bar-chart-line-fill"></i>
             Reportes
@@ -47,6 +47,19 @@
               Reporte por Categoria
             </a>
           </div>
+
+          <a *ngIf ="cliente" class="nav-link collapsed" [routerLink]="['/portal/perfil']" data-bs-toggle="collapse"
+            data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+            <i class="left-icon-nav bi bi-bag-check-fill"></i>
+            Perfil
+            <i #icon_producto class="right-icon-nav bi bi-caret-right-fill"></i>
+          </a>
+          <a *ngIf ="cliente" class="nav-link collapsed" [routerLink]="['/portal/pedidos']" data-bs-toggle="collapse"
+            data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+            <i class="left-icon-nav bi bi-bag-check-fill"></i>
+            Mis pedidos
+            <i #icon_producto class="right-icon-nav bi bi-caret-right-fill"></i>
+          </a>
 
         </div>
         <div>
