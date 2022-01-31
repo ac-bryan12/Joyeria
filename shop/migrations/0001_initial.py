@@ -9,46 +9,50 @@ from producto.models import Articulo
 from shop.models import Pago,Pedido,Factura
 from shop.serializers import CartSerializer
 from random import randint
+from shop.mongodbs import NoSQLDB
 
-# def crear_pedido(data,user,fecha):
-#         serializer = CartSerializer(data=data,many=True)
-#         serializer.is_valid()
-#         pedido = Pedido()
-#         pedido.usuario = user
-#         pedido.save()
+def crear_pedido(data,user,fecha):
+    serializer = CartSerializer(data=data,many=True)
+    if serializer.is_valid(raise_exception=True):
+        pedido = Pedido()
+        pedido.usuario = user
+        pedido.save()
         
-#         valor_total = 0
-#         for product in serializer.validated_data:
-#             articulo = Articulo.objects.get(pk=product['id'])   
-#             detalle = DetallesPedido()
-#             detalle.pedido = pedido
-#             detalle.articulo = articulo
-#             detalle.cantidadSolicitada = product['amount']
-            
-#             if articulo.promocion:
-#                 detalle.precioUnitario = articulo.promocion
-#             else:
-#                 detalle.precioUnitario =  articulo.precio
-            
-#             detalle.save()
-            
-#             if articulo.stock >= product['amount']:
-#                 articulo.stock = int(articulo.stock) -  int(product['amount'])
-#                 articulo.save()
-#             else:
-#                 articulo.stock = 0
-#                 articulo.save()
-            
-#             valor_total += float(detalle.precioUnitario) * int(detalle.cantidadSolicitada)
+        pedido.fechaCompra
+        pedido.save()
         
-#         if valor_total != 0.0:
-#             pago = Pago.objects.create(valor=valor_total)
-#             pedido.total = valor_total
-#             pedido.fechaCompra = fecha
-#             pedido.save()
-#             factura = Factura.objects.create(pago=pago,pedido=pedido)
-#             factura.fechaFacturacion = fecha
-#             factura.save()
+        valor_total = 0
+        
+        detalle = {}
+        detalle["items"] = serializer.validated_data
+        detalle["id_pedido"] = pedido.pk
+        
+        noSQL = NoSQLDB()
+        
+        if noSQL.create_detalle(detalle):
+        
+            for product in serializer.validated_data:
+                articulo = Articulo.objects.filter(pk=product['id'])
+                
+                if articulo.exists():
+                    articulo = articulo.get()
+                    
+                    if articulo.promocion:
+                        valor_total += float(articulo.promocion) * int(product['amount'])
+                    else:
+                        valor_total +=  float(articulo.precio) * int(product['amount'])
+                    
+                    articulo.stock = int(articulo.stock) -  int(product['amount'])
+                    articulo.save()
+            
+            if valor_total != 0.0:
+                pago = Pago.objects.create(valor=valor_total)
+                pedido.total = valor_total
+                pedido.save()
+                Factura.objects.create(pago=pago,pedido=pedido)
+        else:
+            pedido.delete()
+            
 
 def insert_data(apps, schema_editor):
     # Creación de un cliente
@@ -189,14 +193,14 @@ def insert_data(apps, schema_editor):
             },
         ],
     ]
-    # i = 1
-    # for pedido in data:
-    #     dia = randint(1,29)
-    #     # mes = randint(1,12)
-    #     fecha = date(2021,i,dia)
+    i = 1
+    for pedido in data:
+        dia = randint(1,29)
+        # mes = randint(1,12)
+        fecha = date(2021,i,dia)
         
-    #     crear_pedido(pedido,user,fecha)
-    #     i += 1
+        crear_pedido(pedido,user,fecha)
+        i += 1
 
 class Migration(migrations.Migration):
 
