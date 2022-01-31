@@ -7,6 +7,7 @@ from shop.models import Pedido
 from shop.mongodbs import NoSQLDB
 
 # Create your views here.
+lista = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
 
 class GraficoPrecio(APIView):
     permission_classes = [permissions.AllowAny]
@@ -50,7 +51,7 @@ class GraficoCompras(APIView):
                 for item in detalle["items"]:
                     cantidad += item["amount"]
             res_mes = {
-                "mes" : i+1,
+                "mes" : lista[i],
                 "cantidad" : cantidad
             }
             results.append(res_mes)
