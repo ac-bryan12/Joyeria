@@ -93,6 +93,13 @@ DATABASES = {
     }
 }
 
+# Mongo Database
+MONGO_DB = config("MONGO_DB")
+MONGO_HOST = config("MONGO_HOST")
+MONGO_PORT = config("MONGO_PORT")
+MONGO_USERNAME = config("MONGO_USERNAME")
+MONGO_PASSWORD = config("MONGO_PASSWORD")
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

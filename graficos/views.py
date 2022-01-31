@@ -1,10 +1,10 @@
 from rest_framework.response import Response
-from django.shortcuts import render
 from producto.models import Articulo, Categoria
 from rest_framework import permissions
 from rest_framework.views import APIView
 from producto.serializers import ArticuloSerializer
-from shop.models import DetallesPedido, Pedido
+from shop.models import Pedido
+from shop.mongodbs import NoSQLDB
 
 # Create your views here.
 
@@ -36,6 +36,7 @@ class GraficoCategorias(APIView):
 
 
 class GraficoCompras(APIView):
+    permission_classes = [permissions.AllowAny]
     
     def get(self,request):
         results = []
@@ -43,9 +44,11 @@ class GraficoCompras(APIView):
             pedidos = Pedido.objects.filter(fechaCompra__month=i+1)
             cantidad = 0
             for pedido in pedidos:
-                detalles = DetallesPedido.objects.filter(pedido=pedido)
-                for detalle in detalles:
-                    cantidad += detalle.cantidadSolicitada
+                noSQL = NoSQLDB()
+                detalle = noSQL.get_detalle(pedido.pk)
+                print(type(detalle))
+                for item in detalle["items"]:
+                    cantidad += item["amount"]
             res_mes = {
                 "mes" : i+1,
                 "cantidad" : cantidad

@@ -46,7 +46,7 @@ class UserView(APIView):
         if request.user.is_authenticated:
             serializer = UserSerializer(request.user)
             return Response(serializer.data)
-        return Response({"error":"No autorizado"},status=status.HTTP_401_UNAUTHORIZED)
+        return Response({"error":"No token provided"},status=status.HTTP_403_FORBIDDEN)
     
     def post(self,request):
         serializer = UserSerializer(data=request.data)
@@ -54,6 +54,21 @@ class UserView(APIView):
             user = serializer.save()
             RegisterView.send_mail(request.data["email"],{'nombre':request.data["first_name"]+" "+request.data["last_name"]},"Creación de cuenta","envioCorreo.html")
             return Response({"msg":"Usuario creado con éxito"})
+        
+    def put(self,request):
+        if request.user.is_authenticated:
+            serializer = UserSerializer(request.user,data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response({"msg":"Usuario modificado con éxito"})
+        return Response({"error":"No token provided"},status=status.HTTP_403_FORBIDDEN)
+
+    def delete(self,request):
+        if request.user.is_authenticated:
+            request.user.delete()
+            return Response({"msg":"Su usuario se ha eliminado del sistema"})
+        return Response({"error":"No token provided"},status=status.HTTP_403_FORBIDDEN)
+        
 
 
 class UserCredentials(APIView):
