@@ -8,6 +8,7 @@ from blog.models import Blog
 
 class BlogView(APIView):
     authentication_classes = (TokenAuthentication,)
+    permission_classes = [permissions.AllowAny]
     
     def get(self,request,id):
         publicacion = Blog.objects.filter(pk=id)
@@ -55,17 +56,17 @@ class BlogView(APIView):
 
 class BlogListView(APIView):
     authentication_classes = (TokenAuthentication,)
-    
+    permission_classes = [permissions.AllowAny]
     def get(self,request):
-        if request.user.is_authenticated:
-            publicaciones = Blog.objects.all()
-            data = []
+        
+        publicaciones = Blog.objects.all()
+        data = []
 
-            for publicacion in publicaciones:
-                post = OrderedDict(BlogSerializer(publicacion).data)
-                post["contenido"] = publicacion.contenido.decode()
-                data.append(post)
-                
-            return Response(data)
+        for publicacion in publicaciones:
+            post = OrderedDict(BlogSerializer(publicacion).data)
+            post["contenido"] = publicacion.contenido.decode()
+            data.append(post)
             
-        return Response({"error":"No autorizado"},status=status.HTTP_403_FORBIDDEN)
+        return Response(data)
+            
+        
