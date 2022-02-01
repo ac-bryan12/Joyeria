@@ -78,4 +78,4 @@ class UserCredentials(APIView):
     def get(self,request):
         group =  request.user.groups.all()
         token = Token.objects.get(user=request.user)
-        return Response({"group":group[0],"token":token.key})    
+        return Response({"group":group[0].name,"token":token.key})    

@@ -1,4 +1,5 @@
 from collections import OrderedDict
+from distutils.log import error
 from rest_framework.views import APIView
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import permissions,status
@@ -20,20 +21,23 @@ class ShopView(APIView):
             serializer_pedido = PedidoSerializer(pedido)
             datos_pedido = OrderedDict(serializer_pedido.data)
             noSQL = NoSQLDB()
-            items = noSQL.get_detalle(pedido.pk)["items"]
-            newItems = []
-            for item in items:
-                articulo = Articulo.objects.filter(pk=item["id"])
-                if articulo.exists():
-                    articulo = articulo.get()
-                    serializer_articulo = ArticuloSerializer(articulo)
-                    datos_articulo = OrderedDict(serializer_articulo.data)
-                    datos_articulo.pop("image_url")
-                    datos_articulo["amount"] = item["amount"]
-                    newItems.append(datos_articulo)
-                
-            datos_pedido["items"] = newItems
-            pedidos_list.append(datos_pedido)
+            try:
+                items = noSQL.get_detalle(pedido.pk)["items"]
+                newItems = []
+                for item in items:
+                    articulo = Articulo.objects.filter(pk=item["id"])
+                    if articulo.exists():
+                        articulo = articulo.get()
+                        serializer_articulo = ArticuloSerializer(articulo)
+                        datos_articulo = OrderedDict(serializer_articulo.data)
+                        datos_articulo.pop("image_url")
+                        datos_articulo["amount"] = item["amount"]
+                        newItems.append(datos_articulo)
+                    
+                datos_pedido["items"] = newItems
+                pedidos_list.append(datos_pedido)
+            except:
+                return Response({"error":"No existen pedidos a mostrar"},status=status.HTTP_400_BAD_REQUEST)
             
         return Response({"pedidos":pedidos_list})
         
