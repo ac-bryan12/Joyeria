@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from blog.serializers import BlogSerializer
 from blog.models import Blog
-import base64
 
 class BlogView(APIView):
     authentication_classes = (TokenAuthentication,)
@@ -28,6 +27,31 @@ class BlogView(APIView):
                 return Response({"msg":"Se ha creado una nueva publicación"})
         return Response({"error":"No autorizado"},status=status.HTTP_403_FORBIDDEN)
     
+    def put(self,request,id):
+        if request.user.is_authenticated:
+            post = Blog.objects.filter(pk=id)
+            if post.exists():
+                post = post.get()
+                serializer = BlogSerializer(post,data = request.data)
+                if serializer.is_valid(raise_exception=True):
+                    serializer.save()
+                    return Response({"msg":"Se ha modificado la publicación"})
+                
+            return Response({"error":"Publicación no encontrada"},status=status.HTTP_404_NOT_FOUND)
+        return Response({"error":"No autorizado"},status=status.HTTP_403_FORBIDDEN)
+        
+
+    def delete(self,request,id):
+        if request.user.is_authenticated:    
+            post = Blog.objects.filter(pk=id)
+            if post.exists():
+                post = post.get()
+                post.delete()                
+                return Response({"msg":"Se ha eliminado la publicación"})
+            return Response({"error":"Publicación no encontrada"},status=status.HTTP_404_NOT_FOUND)
+        return Response({"error":"No autorizado"},status=status.HTTP_403_FORBIDDEN)
+
+
 
 class BlogListView(APIView):
     authentication_classes = (TokenAuthentication,)

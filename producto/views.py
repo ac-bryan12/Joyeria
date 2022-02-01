@@ -28,9 +28,9 @@ class Articulos(APIView):
             args["promocion__isnull"] = promocion
         
         if len(args) > 0 :    
-            query = Articulo.objects.filter(**args)
+            query = Articulo.objects.filter(**args).exclude(stock=0)
         else:
-            query = Articulo.objects.all()
+            query = Articulo.objects.all().exclude(stock=0)
             
         serializer = ArticuloSerializer(query,many=True)
 
@@ -70,7 +70,8 @@ class Articulos(APIView):
             articulo = Articulo.objects.filter(pk=id)
             if articulo.exists():
                 articulo = articulo.get()
-                articulo.delete()
+                articulo.stock = 0
+                articulo.save()
                 return Response({"msg":"Éxito al borrar."})
             return Response({"error":"El articulo o producto no existe."},status=status.HTTP_404_NOT_FOUND)
         return Response({"error":"No autorizado"},status=status.HTTP_401_UNAUTHORIZED)
