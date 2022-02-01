@@ -25,6 +25,9 @@ import { PerfilComponent } from './componentes/admin/perfil/perfil.component';
 import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
 import { BlogsComponent } from './componentes/sitioComercial/blogs/blogs.component';
 import { ContenidoBlogComponent } from './componentes/sitioComercial/contenido-blog/contenido-blog.component';
+import { EditBlogComponent } from './componentes/admin/edit-blog/edit-blog.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { AllPostsComponent } from './componentes/admin/all-posts/all-posts.component';
 
 @NgModule({
   declarations: [
@@ -47,14 +50,18 @@ import { ContenidoBlogComponent } from './componentes/sitioComercial/contenido-b
     PerfilComponent,
     PedidosComponent,
     BlogsComponent,
-    ContenidoBlogComponent
+    ContenidoBlogComponent,
+    EditBlogComponent,
+    AllPostsComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEditorModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

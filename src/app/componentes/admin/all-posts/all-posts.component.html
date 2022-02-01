@@ -1,0 +1,30 @@
+<div>
+    <div>
+        <h1>Publicaciones</h1>
+    </div>
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let post of publicaciones">
+                <th scope="row">{{post.id}}</th>
+                <td>{{post.titulo}}</td>
+                <td>{{post.autor}}</td>
+                <td>{{post.descripcion}}</td>
+                <td>
+                    <button value="{{post.id}}" (click)="modificarPost(post.id)"><i  class="bi bi-pencil-square"></i></button>
+                    <button value="{{post.id}}" (click)="eliminarPost(post.id)" ><i  class="bi bi-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

@@ -18,7 +18,7 @@ export class BlogsComponent implements OnInit {
   }
 
   cargarBlogs() {
-    this.service.peticionGet("http://localhost:8000/api/blog/list_publicacion/", true).subscribe(res => {
+    this.service.peticionGet("http://localhost:8000/api/blog/list_publicacion/").subscribe(res => {
       this.blogs = res
 
     })

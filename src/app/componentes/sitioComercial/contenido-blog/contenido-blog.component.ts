@@ -19,7 +19,7 @@ export class ContenidoBlogComponent implements OnInit {
 
 
   generarContenido(){
-    this.service.peticionGet("http://localhost:8000/api/blog/publicacion/"+this.id,true).subscribe(res=>{
+    this.service.peticionGet("http://localhost:8000/api/blog/publicacion/"+this.id).subscribe(res=>{
       let cont = document.getElementById("contenido") as HTMLElement
       cont.innerHTML = atob(res.contenido)
     })

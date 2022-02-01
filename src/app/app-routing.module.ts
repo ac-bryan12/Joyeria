@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddModifyProductComponent } from './componentes/admin/add-modify-product/add-modify-product.component';
+import { AllPostsComponent } from './componentes/admin/all-posts/all-posts.component';
+import { EditBlogComponent } from './componentes/admin/edit-blog/edit-blog.component';
 import { ListProductsComponent } from './componentes/admin/list-products/list-products.component';
 import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
 import { PerfilComponent } from './componentes/admin/perfil/perfil.component';
@@ -34,7 +36,10 @@ const routes: Routes = [
         {path:'reportesFecha',component:ReportesComponent},
         {path:'reportesCategorias',component:ReporteCategoriaComponent},
         {path:'perfil',component:PerfilComponent},
-        {path:'pedidos',component:PedidosComponent}
+        {path:'pedidos',component:PedidosComponent},
+        {path:'edit_post',component:EditBlogComponent},
+        {path:'all_posts',component:AllPostsComponent},
+
       ]
     },
     {path: 'shopping-cart',component:CarritoComponent}
