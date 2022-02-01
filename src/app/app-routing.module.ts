@@ -8,8 +8,10 @@ import { PortalComponent } from './componentes/admin/portal/portal.component';
 import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria/reporte-categoria.component';
 import { ReportesComponent } from './componentes/admin/reportes/reportes.component';
 import { ArticulosComponent } from './componentes/sitioComercial/articulos/articulos.component';
+import { BlogsComponent } from './componentes/sitioComercial/blogs/blogs.component';
 import { CarritoComponent } from './componentes/sitioComercial/carrito/carrito.component';
 import { ContactenosComponent } from './componentes/sitioComercial/contactenos/contactenos.component';
+import { ContenidoBlogComponent } from './componentes/sitioComercial/contenido-blog/contenido-blog.component';
 import { CreateCuentaComponent } from './componentes/sitioComercial/create-cuenta/create-cuenta.component';
 import { InicioComponent } from './componentes/sitioComercial/inicio/inicio.component';
 import { LoginComponent } from './componentes/sitioComercial/login/login.component';
@@ -22,6 +24,8 @@ const routes: Routes = [
     {path: 'nosotros',component:NosotrosComponent},
     {path: 'login',component:LoginComponent},
     {path: 'signup',component:CreateCuentaComponent},
+    {path: 'blog',component:BlogsComponent},
+    {path:'contenido',component:ContenidoBlogComponent},
     {path:'portal',component:PortalComponent,children:
       [
         {path:'all_products',component:ListProductsComponent},

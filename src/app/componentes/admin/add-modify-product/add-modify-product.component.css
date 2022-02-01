@@ -1,3 +1,18 @@
 /* input:read-only{
     background-color: #ccc;
 } */
+
+.contenedor{
+    display: flex;
+    margin: 0 25% 0 25%;
+
+}
+
+.form-control-label{
+    font-weight: bold;
+}
+
+.lead{
+    color: red;
+}
+

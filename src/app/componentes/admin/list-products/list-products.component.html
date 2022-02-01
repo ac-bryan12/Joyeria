@@ -24,8 +24,8 @@
                 <td>{{producto.promocion!=null ? producto.promocion : "-----------"}}</td>
                 <td>{{producto.stock}}</td>
                 <td>
-                    <button value="{{producto.id}}" (click)="modificarProducto(producto)"><i  class="bi bi-pencil-square"></i></button>
-                    <button value="{{producto.id}}" (click)="eliminarProducto(producto.id)" ><i  class="bi bi-trash"></i></button>
+                    <button class="btn btn-dark me-1" value="{{producto.id}}" (click)="modificarProducto(producto)"><i  class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-dark ms-1" value="{{producto.id}}" (click)="eliminarProducto(producto.id)" ><i  class="bi bi-trash"></i></button>
                 </td>
               </tr>
             </tbody>

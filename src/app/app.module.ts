@@ -23,6 +23,8 @@ import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria
 import { GraficosComponent } from './componentes/sitioComercial/partials/graficos/graficos.component';
 import { PerfilComponent } from './componentes/admin/perfil/perfil.component';
 import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
+import { BlogsComponent } from './componentes/sitioComercial/blogs/blogs.component';
+import { ContenidoBlogComponent } from './componentes/sitioComercial/contenido-blog/contenido-blog.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component'
     ReporteCategoriaComponent,
     GraficosComponent,
     PerfilComponent,
-    PedidosComponent
+    PedidosComponent,
+    BlogsComponent,
+    ContenidoBlogComponent
   ],
   imports: [
     BrowserModule,

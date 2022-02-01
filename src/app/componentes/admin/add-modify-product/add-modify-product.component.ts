@@ -18,10 +18,10 @@ export class AddModifyProductComponent implements OnInit {
 
   constructor(private router: Router,private service: PeticionesService,private form: FormBuilder,private route: ActivatedRoute) {
     this.product_form = this.form.group({
-      nombre: this.form.control('', [Validators.required, Validators.maxLength(255)]),
-      categoria: this.form.control(''),
+      nombre: this.form.control('', [Validators.required, Validators.minLength(3),Validators.maxLength(255),Validators.pattern('^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$')]),
+      categoria: this.form.control('',[Validators.required]),
       precio: this.form.control('',[Validators.required,Validators.pattern('^[0-9]+([.][0-9]+)?$'),Validators.maxLength(12)]),
-      promocion: this.form.control('',[Validators.required,Validators.pattern('^[0-9]+([.][0-9]+)?$'),Validators.maxLength(12)]),
+      promocion: this.form.control('',[Validators.pattern('^[0-9]+([.][0-9]+)?$'),Validators.maxLength(12)]),
       image_url: this.form.control('',[Validators.required,Validators.maxLength(1024)]),
       stock: this.form.control('',[Validators.required])
     })

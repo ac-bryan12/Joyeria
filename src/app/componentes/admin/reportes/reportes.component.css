@@ -39,3 +39,7 @@ td{
     width: 100px;
     justify-content: center;
 }
+
+.reporte{
+    border: 1px solid black;
+}
