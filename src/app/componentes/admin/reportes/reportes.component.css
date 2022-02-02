@@ -39,3 +39,15 @@ td{
     width: 100px;
     justify-content: center;
 }
+
+.reportes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2%;
+    flex-direction: column;
+}
+
+.tabla-reporte{
+    width: 90%;
+}

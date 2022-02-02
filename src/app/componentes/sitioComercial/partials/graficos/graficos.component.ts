@@ -42,6 +42,7 @@ export class GraficosComponent implements OnInit {
         this.drawBars(this.data)
       }
       else if (this.url == "puntos") {
+        console.log(res)
         this.createSvg_Charts(this.url)
         for(let elemento in res.data){
           this.data.push(res.data[elemento])
@@ -164,12 +165,12 @@ export class GraficosComponent implements OnInit {
       .style("text-anchor", "end");
 
     const y = d3.scaleLinear()
-      .domain([0, 10])
+      .domain([0, 20])
       .range([this.height, 0]);
     this.svg.append("g")
       .call(d3.axisLeft(y));
 
-    const dots = this.svg.append('g');
+    const dots = this.svg.append('g').attr("transform", "translate(15,0)")
     dots.selectAll("dot")
       .data(data)
       .enter()

@@ -60,7 +60,7 @@
                                     <td *ngIf = "item.promocion == null">------------</td>
                                     <td>{{item.categoria.nombre}}</td>
                                     <td >
-                                        <input class="cantidad {{pedido.id}}" #valor value ="{{item.amount}}" type="number" name ="{{item.id}}" 
+                                        <input class="cantidad {{pedido.id}}" #valor value ="{{item.amount}}" min=1 type="number" name ="{{item.id}}" 
                                         (change)="revisarCantidad(valor,item.stock,item.amount)"></td>
                                     <td>
                                         <button (click)="eliminarProducto(item.id,pedido.items,pedido.id)" class ="btn btn-primary">
