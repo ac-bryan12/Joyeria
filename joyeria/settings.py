@@ -142,7 +142,7 @@ STATIC_URL = '/static/'
 
 EMAIL_HOST = 'smtp.googlemail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'electronicafacturacion13@gmail.com'
+EMAIL_HOST_USER = config('USER_EMAIL')
 EMAIL_HOST_PASSWORD = config('USER_EMAIL_PASSWORD')
 EMAIL_USE_TLS = True
 

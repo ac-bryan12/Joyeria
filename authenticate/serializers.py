@@ -8,7 +8,7 @@ import re
 from authenticate.models import Profile
 
 class UserSerializer(serializers.ModelSerializer):
-    first_name = serializers.CharField(min_length=2,max_length=150)
+    first_name = serializers.CharField(max_length=150)
     last_name = serializers.CharField(max_length=150)
     password = serializers.CharField(required=False,max_length=30,write_only=True)
     email = serializers.EmailField(max_length=254)
