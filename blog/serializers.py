@@ -30,7 +30,7 @@ class BlogSerializer(serializers.ModelSerializer):
         instance.descripcion = validated_data["descripcion"]
         instance.autor = validated_data["autor"]
         instance.img_portada = validated_data["img_portada"]
-        instance.contenido = base64.b64encode(validated_data["contenido"])
+        instance.contenido = validated_data["contenido"].encode()
         instance.save()
         
         return instance

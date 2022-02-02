@@ -50,7 +50,6 @@ class GraficoCompras(APIView):
             for pedido in pedidos:
                 noSQL = NoSQLDB()
                 detalle = noSQL.get_detalle(pedido.pk)
-                print(type(detalle))
                 for item in detalle["items"]:
                     cantidad += item["amount"]
             res_mes = {
