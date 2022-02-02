@@ -43,30 +43,32 @@ export class ProductoComponent implements OnInit, OnChanges {
   }
 
   agregarProducto(id:any){
-    let carrito_count:any = document.querySelector("#navbarSupportedContent span.badge.bg-dark.text-white.ms-1.rounded-pill")
-    let productos:any[]
-    if (this.cookieService.check("carrito")){
-      productos = JSON.parse(this.cookieService.get("carrito"))
-      for (let producto of productos){
-        if (id == producto.id ){
-          return
+    if (confirm("¿Deseas agregar el producto a tu carrito?")){
+      let carrito_count:any = document.querySelector("#navbarSupportedContent span.badge.bg-dark.text-white.ms-1.rounded-pill")
+      let productos:any[]
+      if (this.cookieService.check("carrito")){
+        productos = JSON.parse(this.cookieService.get("carrito"))
+        for (let producto of productos){
+          if (id == producto.id ){
+            return
+          }
         }
+        
+        productos.push({
+          id: id,
+          amount: 1
+        })
+        this.cookieService.set("carrito",JSON.stringify(productos),{path:"/"})
+      }else{
+        productos = [{
+          id: id,
+          amount: 1
+        }]
+        this.cookieService.set("carrito",JSON.stringify(productos),{path:"/"})
       }
-      
-      productos.push({
-        id: id,
-        amount: 1
-      })
-      this.cookieService.set("carrito",JSON.stringify(productos),{path:"/"})
-    }else{
-      productos = [{
-        id: id,
-        amount: 1
-      }]
-      this.cookieService.set("carrito",JSON.stringify(productos),{path:"/"})
-    }
 
-    carrito_count.textContent =  productos.length
+      carrito_count.textContent =  productos.length
+    }
   
   }
 

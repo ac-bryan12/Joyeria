@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PeticionesService } from 'src/app/services/requests/peticiones.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class AllPostsComponent implements OnInit {
 
   publicaciones:any = []
   
-  constructor(private service:PeticionesService) { }
+  constructor(private service:PeticionesService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.obtenerPublicaciones()
@@ -25,7 +26,7 @@ export class AllPostsComponent implements OnInit {
   }
 
   modificarPost(id:any){
-
+    this.router.navigate(["../edit_post"],{relativeTo:this.route,queryParams:{id:id}})
   }
 
   eliminarPost(id:any){

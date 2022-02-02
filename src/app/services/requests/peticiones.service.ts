@@ -14,7 +14,6 @@ export class PeticionesService {
 
   constructor(private http:HttpClient,private cookieService: CookieService) { }
 
-
   set_Token(){
     this.headers.Authorization = "Token "+this.cookieService.get("token")
   }
