@@ -84,8 +84,6 @@ class Reporte(APIView):
                             if producto.id not in data:
                                 data[producto.id]={"nombre":producto.nombre,"cantidad":cantidad,"cliente":pedido.usuario.username}
                             else:
-                                print(data[producto.id]["cantidad"])
-                                print(cantidad)
                                 data[producto.id]["cantidad"] = data[producto.id]["cantidad"]+cantidad
                     return Response({"data":data},status=status.HTTP_200_OK)
                 return Response({"error":"Revise que el rango de fechas"},status=status.HTTP_400_BAD_REQUEST)
