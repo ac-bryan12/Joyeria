@@ -31,15 +31,15 @@ const routes: Routes = [
     {path:'contenido',component:ContenidoBlogComponent},
     {path:'portal',component:PortalComponent,children:
       [
-        {path:'all_products',component:ListProductsComponent},
-        {path:'add_product',component:AddModifyProductComponent},
-        {path:'modify_product',component:AddModifyProductComponent},
-        {path:'reportesFecha',component:ReportesComponent},
-        {path:'reportesCategorias',component:ReporteCategoriaComponent},
-        {path:'perfil',component:PerfilComponent},
-        {path:'pedidos',component:PedidosComponent},
-        {path:'edit_post',component:EditBlogComponent},
-        {path:'all_posts',component:AllPostsComponent},
+        {path:'all_products',component:ListProductsComponent,canActivate:[GuardGuard]},
+        {path:'add_product',component:AddModifyProductComponent,canActivate:[GuardGuard]},
+        {path:'modify_product',component:AddModifyProductComponent,canActivate:[GuardGuard]},
+        {path:'reportesFecha',component:ReportesComponent,canActivate:[GuardGuard]},
+        {path:'reportesCategorias',component:ReporteCategoriaComponent,canActivate:[GuardGuard]},
+        {path:'perfil',component:PerfilComponent,canActivate:[GuardGuard]},
+        {path:'pedidos',component:PedidosComponent,canActivate:[GuardGuard]},
+        {path:'edit_post',component:EditBlogComponent,canActivate:[GuardGuard]},
+        {path:'all_posts',component:AllPostsComponent,canActivate:[GuardGuard]},
 
       ]
     },

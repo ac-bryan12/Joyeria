@@ -44,10 +44,14 @@ export class PortalComponent implements OnInit {
     this.service.peticionGet("http://localhost:8000/auth/user_credentials/",true).subscribe(res=>{
       if(res.group=="admin"){
         this.admin = true
+        this.router.navigate(["/portal/all_products"])
       }
       else{
         this.cliente =true
+        this.router.navigate(["/portal/perfil"])
       }
+    },err=>{
+      this.router.navigate(["/login"])
     })
   }
 

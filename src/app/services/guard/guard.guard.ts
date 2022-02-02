@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { PeticionesService } from '../requests/peticiones.service';
 
@@ -8,7 +9,7 @@ import { PeticionesService } from '../requests/peticiones.service';
 })
 export class GuardGuard implements CanActivate {
 
-  constructor(private service:PeticionesService,private router: Router){
+  constructor(private service:PeticionesService,private router: Router,private cookieService:CookieService){
 
   }
 
@@ -19,19 +20,12 @@ export class GuardGuard implements CanActivate {
       return true;
   }
 
-  // check(url:any):true|UrlTree{
-  //   let res: true|UrlTree = this.router.parseUrl('/login');
-  //   this.service.peticionGet("http://localhost:8000/auth/user_credentials/").subscribe(res=>{
-  //     if(res.group == "admin"){
-  //       res = true
-  //     }
-  //   })
-  //   setTimeout(() => { }, 2000);
-  //   // Store the attempted URL for redirecting
-  //   // this.authService.redirectUrl = url;
-
-  //   // Redirect to the login page
-  //   return res
-  // }
+  check(url:any):true|UrlTree{
+    let res: true|UrlTree = this.router.parseUrl('/login');
+    if (this.cookieService.check("token")){
+      res = true
+    }
+    return res
+  }
   
 }
