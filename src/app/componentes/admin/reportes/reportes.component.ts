@@ -24,13 +24,12 @@ export class ReportesComponent implements OnInit {
   crearReporte(form:any){
     this.lista = []
     this.service.peticionPost("http://localhost:8000/api/reportes",form,true).subscribe(res=>{
-      console.log(res.data)
       for(let item in res.data){
         let atr = res.data[item]
         this.lista.push({id:item,nombre:atr["nombre"],cantidad:atr["cantidad"],cliente:atr["cliente"]})
       }
-      console.log(this.lista)
       this.reporteGenerado = true
+      alert("Reporte Generado con éxito")
     },err=>{
       alert(err.error.error)
     })
