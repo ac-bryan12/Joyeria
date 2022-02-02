@@ -80,7 +80,6 @@ class Reporte(APIView):
                         for item in detalle["items"]:
                             cantidad = item["amount"]
                             producto = Articulo.objects.filter(id=item["id"])[0]
-                            print("Producto: " + str(producto.id) + " Cantidad: " + str(cantidad))
                             if producto.id not in data:
                                 data[producto.id]={"nombre":producto.nombre,"cantidad":cantidad,"cliente":pedido.usuario.username}
                             else:
