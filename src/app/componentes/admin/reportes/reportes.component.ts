@@ -22,7 +22,8 @@ export class ReportesComponent implements OnInit {
   }
 
   crearReporte(form:any){
-    this.service.peticionPost("http://localhost:8000/api/reportes",form).subscribe(res=>{
+    this.lista = []
+    this.service.peticionPost("http://localhost:8000/api/reportes",form,true).subscribe(res=>{
       console.log(res.data)
       for(let item in res.data){
         let atr = res.data[item]

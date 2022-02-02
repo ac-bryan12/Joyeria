@@ -1,71 +1,120 @@
 <div>
-    <div>
-        <h1>{{title}}</h1>
+    <div class="bg-dark">
+        <h1 class="text-center text-white mt-4">{{title}}</h1>
     </div>
-    <div class="">
-        <form [formGroup]="product_form" #formRef="ngForm" class="form-card col-10 m-5" (ngSubmit)="enviar(product_form.value)">
-            <div class="row justify-content-between text-left">
+    <div class="contenedor">
+        <form #form [formGroup]="product_form" #formRef="ngForm" novalidate class="form-card col-10 m-5"
+            (ngSubmit)="enviar(product_form.value)">
+            <div class="row justify-content-between text-left mb-3">
+
+
                 <div class="form-group col-sm-6 flex-column d-flex">
-                    <label class="form-control-label px-3" for="nombre">
-                        Nombre
-                        <span class="text-danger"> *</span>
-                    </label> 
-                    <input type="text" formControlName="nombre" name="nombre" > 
-                </div>
-                <div class="form-group col-sm-6 flex-column d-flex"> 
-                    <label class="form-control-label px-3" for="categoria">
-                        Categoria
-                        <span class="text-danger"> *</span>
-                    </label> 
-                    <select formControlName="categoria" name="categoria" >
-                        <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row justify-content-between text-left">
-                <div class="form-group col-sm-6 flex-column d-flex"> 
-                    <label class="form-control-label px-3" for="precio">
-                        precio
-                        <span class="text-danger"> *</span>
-                    </label> 
-                    <input type="text" formControlName="precio" name="precio"  > 
-                </div>
-                <div class="form-group col-sm-6 flex-column d-flex"> 
-                    <label class="form-control-label px-3" for="promocion">
-                        promocion
-                        <span class="text-danger"> *</span>
-                    </label>
-                    <div>
-                        <input #checkbox type="checkbox" (change)="changePromocion(input_promocion,checkbox)" checked>
-                        <input #input_promocion class="disabled" type="text" formControlName="promocion" name="promocion"> 
+                    <label class="form-label text-dark" for="nombre">Nombre<span class="text-danger">*</span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
+                        </div>
+                        <input class="form-control" formControlName="nombre" name="nombre" id="lastNameLabel"
+                            placeholder="Nombre Producto" type="text">
                     </div>
-                    
+                    <span class="lead error"
+                        *ngIf="(formRef.submitted && product_form.get('nombre')?.hasError('required')) || product_form.get('nombre')?.hasError('maxlength') || product_form.get('nombre')?.hasError('minlength') || product_form.get('nombre')?.hasError('pattern')">Ingrese
+                        un nombre válido
+                    </span>
                 </div>
-            </div>
-            <div class="row justify-content-between text-left">
-                <div class="form-group col-sm-6 flex-column d-flex"> 
-                    <label class="form-control-label px-3" for="stock">
-                        stock
-                        <span class="text-danger"> *</span>
-                    </label> 
-                    <input type="number" formControlName="stock" name="stock" > 
+
+
+                <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-label text-dark" for="categoria">Categoria<span
+                            class="text-danger">*</span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-columns-gap"></i></span>
+                        </div>
+                        <select class="form-control" formControlName="categoria" name="categoria">
+                            <option value="" selected disabled>Escoja una categoria</option>
+                            <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}
+                            </option>
+                        </select>
+                    </div>
+                    <span class="lead error"
+                        *ngIf="(formRef.submitted && product_form.get('categoria')?.hasError('required'))">Seleecione
+                        una Categoria
+                    </span>
                 </div>
             </div>
 
-            <div class="row justify-content-between text-left">
-                <div class="form-group col-12 flex-column d-flex"> 
-                    <label class="form-control-label px-3" for="url_img">
-                        url de la imagen
-                        <span class="text-danger"> *</span>
-                    </label> 
-                    <input type="url" formControlName="image_url" name="url_img" > 
+            <div class="row justify-content-between text-left mb-3">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-label text-dark" for="precio">Precio<span class="text-danger">*</span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-cash-coin"></i></span>
+                        </div>
+                        <input class="form-control" formControlName="precio" name="precio" id="lastNameLabel"
+                            placeholder="Precio" type="text">
+                    </div>
+                    <span class="lead error"
+                        *ngIf="(formRef.submitted && product_form.get('precio')?.hasError('required')) || product_form.get('precio')?.hasError('maxlength') || product_form.get('precio')?.hasError('pattern')">Ingrese
+                        un Precio válido
+                    </span>
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-label text-dark" for="promocion">Promocion<span
+                            class="text-danger">*</span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <input #checkbox type="checkbox" (change)="changePromocion(input_promocion,checkbox)"
+                                    checked>
+                                <input #input_promocion class="ms-4 form-control disabled" type="text"
+                                    formControlName="Promocion" name="promocion">
+                            </span>
+                        </div>
+                    </div>
+                    <span class="lead error"
+                        *ngIf="(formRef.submitted && product_form.get('promocion')?.hasError('required')) || product_form.get('promocion')?.hasError('maxlength') || product_form.get('promocion')?.hasError('pattern')">Ingrese
+                        valor Promoción Válido
+                    </span>
+                </div>
+            </div>
+            <div class="row justify-content-between text-left mb-3">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                    <label class="form-label text-dark" for="stock">Stock<span class="text-danger">*</span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-boxes"></i></span>
+                        </div>
+                        <input class="form-control" formControlName="stock" name="stock" id="lastNameLabel"
+                            placeholder="Stock" type="number">
+                    </div>
+                    <span class="lead error" *ngIf="(formRef.submitted )">Ingrese
+                        valor Stock Válido
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-between text-left mb-3">
+                <div class="form-group col-12 flex-column d-flex">
+                    <label class="form-label text-dark" for="url_img">Url de Imagen<span class="text-danger">*</span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-link"></i></span>
+                        </div>
+                        <input class="form-control" formControlName="image_url" name="url_img" id="lastNameLabel"
+                            placeholder="Ingrese una Url" type="url">
+                    </div>
+                    
+                    <span class="lead error"
+                        *ngIf="(formRef.submitted && product_form.get('image_url')?.hasError('required')) || product_form.get('image_url')?.hasError('maxlength')">Ingrese
+                        Url Válido
+                    </span>
                 </div>
             </div>
             <div class="row justify-content-end">
-                <div class="form-group col-sm-6"> 
-                    <button type="submit" class="btn-block btn-primary">
-                        Enviar
-                    </button> 
+                <div class="form-group col-sm-6">
+                    <input type="submit" [disabled]="formRef.invalid" class="mt-4 btn btn-outline-dark btn-block"
+                        value="Enviar">
                 </div>
             </div>
         </form>

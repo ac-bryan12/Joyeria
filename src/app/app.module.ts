@@ -23,6 +23,11 @@ import { ReporteCategoriaComponent } from './componentes/admin/reporte-categoria
 import { GraficosComponent } from './componentes/sitioComercial/partials/graficos/graficos.component';
 import { PerfilComponent } from './componentes/admin/perfil/perfil.component';
 import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
+import { BlogsComponent } from './componentes/sitioComercial/blogs/blogs.component';
+import { ContenidoBlogComponent } from './componentes/sitioComercial/contenido-blog/contenido-blog.component';
+import { EditBlogComponent } from './componentes/admin/edit-blog/edit-blog.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { AllPostsComponent } from './componentes/admin/all-posts/all-posts.component';
 
 @NgModule({
   declarations: [
@@ -43,14 +48,20 @@ import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component'
     ReporteCategoriaComponent,
     GraficosComponent,
     PerfilComponent,
-    PedidosComponent
+    PedidosComponent,
+    BlogsComponent,
+    ContenidoBlogComponent,
+    EditBlogComponent,
+    AllPostsComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEditorModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -1,0 +1,12 @@
+.blog{
+    cursor:pointer;
+}
+
+.d-flex > h5, span{
+    text-decoration: underline white;
+    color: black;
+}
+
+.info:hover{
+    color: gray;
+}

@@ -8,7 +8,7 @@ import { PeticionesService } from 'src/app/services/requests/peticiones.service'
 })
 export class GraficosComponent implements OnInit {
   @Input() url: string = ""
-  @Input() titulo: string = ""
+  @Input() titulo:  string = ""
   private data: any[] = []
   private margin = 50;
   private width = Math.abs(window.screen.width - 820);
