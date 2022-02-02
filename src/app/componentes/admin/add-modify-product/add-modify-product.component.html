@@ -14,7 +14,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
                         </div>
-                        <input class="form-control" formControlName="nombre" name="nombre" id="lastNameLabel"
+                        <input maxlength="255" class="form-control" formControlName="nombre" name="nombre" id="lastNameLabel"
                             placeholder="Nombre Producto" type="text">
                     </div>
                     <span class="lead error"
@@ -85,7 +85,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="bi bi-boxes"></i></span>
                         </div>
-                        <input class="form-control" formControlName="stock" name="stock" id="lastNameLabel"
+                        <input min="1" class="form-control" formControlName="stock" name="stock" id="lastNameLabel"
                             placeholder="Stock" type="number">
                     </div>
                     <span class="lead error" *ngIf="(formRef.submitted )">Ingrese
@@ -101,7 +101,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="bi bi-link"></i></span>
                         </div>
-                        <input class="form-control" formControlName="image_url" name="url_img" id="lastNameLabel"
+                        <input maxlength="1024" class="form-control" formControlName="image_url" name="url_img" id="lastNameLabel"
                             placeholder="Ingrese una Url" type="url">
                     </div>
                     

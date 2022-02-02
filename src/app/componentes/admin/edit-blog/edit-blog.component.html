@@ -1,4 +1,7 @@
-<div class="row">
+<div class="row mt-3">
+    <div class="text-center">
+        <h1>{{titulo}}</h1>
+    </div>
     <form [formGroup]="newPost" #formRef="ngForm" (ngSubmit)="guardar()" class="form-signin col-8">
 
         <!-- <div class="{{msg_d}} label-campos error-messages" id="user_invalid">
@@ -9,28 +12,28 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
             </div>
-            <input formControlName="titulo" class="form-control" placeholder="Titulo" type="text" required autofocus>
+            <input maxlength="300" formControlName="titulo" class="form-control" placeholder="Titulo" type="text" required autofocus>
         </div>
 
         <div class="input-group mb-4">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
             </div>
-            <input formControlName="descripcion" class="form-control" placeholder="Descripción" required autofocus>
+            <input maxlength="300" formControlName="descripcion" class="form-control" placeholder="Descripción" required autofocus>
         </div>
 
         <div class="input-group mb-4">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
             </div>
-            <input formControlName="autor" class="form-control" placeholder="Autor" required autofocus>
+            <input maxlength="300" formControlName="autor" class="form-control" placeholder="Autor" required autofocus>
         </div>
 
         <div class="input-group mb-4">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
             </div>
-            <input type="url" formControlName="img_portada" class="form-control" placeholder="Imagen de portada" required autofocus>
+            <input maxlength="1024" type="url" formControlName="img_portada" class="form-control" placeholder="Imagen de portada" required autofocus>
         </div>
 
         <div class="NgxEditor__Wrapper">

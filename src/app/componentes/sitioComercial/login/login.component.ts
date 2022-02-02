@@ -28,8 +28,12 @@ export class LoginComponent implements OnInit {
 
   log_in(){
     this.service.peticionPost("http://localhost:8000/auth/login/",this.login.value).subscribe(res=>{
-      this.cookieService.set("token",res.token)
-      this.router.navigate(["/portal"])
+      this.cookieService.set("token",res.token,{path:"/"})
+      if(this.cookieService.check("returnURL")){
+        this.router.navigate([this.cookieService.get("returnURL")])  
+      }else{
+        this.router.navigate(["/portal"])
+      }
     },err=>{
       this.msg_d = ""
       this.msg_content = err.error.error;

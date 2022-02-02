@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { PeticionesService } from 'src/app/services/requests/peticiones.service';
 
 @Component({
@@ -11,16 +12,19 @@ export class PortalComponent implements OnInit {
   admin=false
   cliente =false
 
-  constructor(private service:PeticionesService,private router:Router) { }
+  constructor(private service:PeticionesService,private router:Router,private cookieService:CookieService) { }
 
   ngOnInit(): void {
-    document.getElementsByTagName('navbar')[0].classList.toggle("d-none")
+    document.getElementsByTagName('navbar')[0].classList.add("d-none")
     this.verificarGrupo()
   }
 
   logout(){
     this.service.peticionGet("http://localhost:8000/auth/logout/",true).subscribe(res=>{
       window.location.replace("http://localhost:4200/")
+      if (this.cookieService.check("token")){
+        this.cookieService.delete("token")
+      }
     },err=>{})
   }
 

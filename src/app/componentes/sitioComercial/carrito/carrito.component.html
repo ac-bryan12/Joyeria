@@ -5,47 +5,48 @@
         </div>
     </div>
 </header>
-<div class="container pt-4">
-    <div *ngFor="let producto of productos" class="row">
-        <div class="col">
-            <div class="row mb-2">
-                <div class="col-4 text-center">
-                    <img class="img-fluid rounded"
-                        src="{{producto.image_url}}" alt="Producto"/>
+<div class="container-fluid pt-4 row">
+    <div class="col-8">
+        <div *ngFor="let producto of productos" class="col">
+                <div class="row mb-2">
+                    <div class="col-4 text-center">
+                        <img class="img-fluid rounded"
+                            src="{{producto.image_url}}" alt="Producto"/>
+                    </div>
+                    <div class="col-6 border border-light border-3">
+                        <h3>{{producto.nombre}}</h3>
+                        <div class="contenedores-datos">
+                            <p class="clave me-2">Precio: </p>
+                            <p>${{producto.promocion?producto.promocion:producto.precio}}</p>
+                        </div>
+                        <div class="contenedores-datos align-items-center">
+                            <p class="clave me-2 mb-0">Cantidad</p>
+                            <input min="1" value="1" max="{{producto.stock}}" class="input-cantidad col-5" type="number" name="cant" placeholder="1" id="{{producto.id}}" (change)="actualizarTotal(producto.id,producto.precio,producto.promocion)">
+                        </div>
+                        <div class="contenedores-datos">
+                            <p class="clave me-2">Subtotal: </p>
+                            <p id="total_{{producto.id}}">${{producto.promocion?producto.promocion:producto.precio}}</p>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button (click)="eliminarProducto(producto.id)" class="text-center btn btn-danger btn-sm">Eliminar producto</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 border border-light border-3">
-                    <h3>{{producto.nombre}}</h3>
-                    <div class="contenedores-datos">
-                        <p class="clave me-2">Precio: </p>
-                        <p>${{producto.precio}}</p>
-                    </div>
-                    <div class="contenedores-datos">
-                        <p class="clave me-2">Entrega: </p>
-                        <p>Dato</p>
-                    </div>
-                    <div class="contenedores-datos align-items-center">
-                        <p class="clave me-2 mb-0">Cantidad</p>
-                        <input class="input-cantidad col-5" type="number" name="cant" placeholder="1">
-                    </div>
-                    <div class="text-center mt-3">
-                        <button class="text-center btn btn-danger btn-sm">Eliminar producto</button>
-                    </div>
-                </div>
-            </div>
+            
         </div>
-        <div class="col col-lg-4">
-            <h3>Subtotal</h3>
-            <div class="contenedores-datos">
-                <h5 class="clave me-2">Cantidad Productos:</h5>
-                <p>Dato</p>
-            </div>
-            <div class="contenedores-datos">
-                <h6 class="clave me-2">Valor:</h6>
-                <p>$ Valor</p>
-            </div>
-            <div class="text-center mt-3">
-                <button class="btn btn-outline-dark">Realizar Pago</button>
-            </div>
+    </div>
+    <div class="col-4">
+        <h3>Total</h3>
+        <div class="contenedores-datos">
+            <h5 class="clave me-2">Cantidad Productos:</h5>
+            <p>{{cantidadProductos}}</p>
+        </div>
+        <div class="contenedores-datos">
+            <h6 class="clave me-2">Valor:</h6>
+            <p>${{totalProductos}}</p>
+        </div>
+        <div class="text-center mt-3">
+            <button (click)="realizarPedido()" class="btn btn-outline-dark">Realizar Pedido</button>
         </div>
     </div>
 </div>

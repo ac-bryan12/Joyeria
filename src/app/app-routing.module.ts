@@ -18,6 +18,7 @@ import { CreateCuentaComponent } from './componentes/sitioComercial/create-cuent
 import { InicioComponent } from './componentes/sitioComercial/inicio/inicio.component';
 import { LoginComponent } from './componentes/sitioComercial/login/login.component';
 import { NosotrosComponent } from './componentes/sitioComercial/nosotros/nosotros.component';
+import { GuardGuard } from './services/guard/guard.guard';
 const routes: Routes = [
     {path: '',redirectTo: 'home',pathMatch:'full'},
     {path: 'home',component:InicioComponent},

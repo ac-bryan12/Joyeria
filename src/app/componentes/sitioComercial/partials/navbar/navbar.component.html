@@ -30,7 +30,11 @@
                   <li class="nav-item"><a class="nav-link" [routerLink]="['/blog']">Blogs</a></li>
               </ul>
               <form class="d-flex">
-                  <a class="btn btn-outline-dark" [routerLink]="['/login']">
+                  <a *ngIf="userLogged" class="btn btn-outline-dark" [routerLink]="['/portal']">
+                      <i class="bi bi-person-circle me-1"></i>
+                      Mi cuenta
+                  </a>
+                  <a *ngIf="!userLogged"  class="btn btn-outline-dark" [routerLink]="['/login']">
                       <i class="bi-box-arrow-in-right me-1"></i>
                       Iniciar Sesión
                   </a>
