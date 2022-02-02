@@ -111,7 +111,9 @@ export class CarritoComponent implements OnInit {
             this.cookieService.delete("carrito")
             this.router.navigate(["/portal/pedidos"])
           },err=>{
-            alert(err.error.error)
+            
+            this.router.navigate(["/login"])
+            this.cookieService.set("returnURL",this.router.url,{path:"/"})
           })  
         }else{
           this.router.navigate(["/login"])

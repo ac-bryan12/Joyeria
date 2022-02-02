@@ -22,11 +22,11 @@
           </a>
 
           <div #sub_producto class="nav-sublink d-none">
-            <a class="nav-link collapsed" [routerLink]="['/portal/all_products']" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" [routerLink]="['./all_products']"  data-bs-toggle="collapse"
               data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
               Todos los productos
             </a>
-            <a class="nav-link collapsed" [routerLink]="['/portal/add_product']" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" [routerLink]="['./add_product']" data-bs-toggle="collapse"
               data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
               Agregar producto
             </a>
@@ -40,19 +40,19 @@
           </a>
 
           <div #sub_reporte class="nav-sublink d-none">
-            <a class="nav-link collapsed" [routerLink]="['/portal/reportesFecha']" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" [routerLink]="['./reportesFecha']" data-bs-toggle="collapse"
               data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
               Reporte de Pedidos por Cliente
             </a>
           </div>
-          <a *ngIf ="cliente" class="nav-link collapsed" [routerLink]="['/portal/perfil']" data-bs-toggle="collapse"
+          <a *ngIf ="cliente" class="nav-link collapsed" [routerLink]="['./perfil']" data-bs-toggle="collapse"
             data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
             <i class="left-icon-nav bi bi-bag-check-fill"></i>
             Perfil
             <i #icon_producto class="right-icon-nav bi bi-caret-right-fill"></i>
           </a>
           
-          <a *ngIf ="cliente" class="nav-link collapsed" [routerLink]="['/portal/pedidos']" data-bs-toggle="collapse"
+          <a *ngIf ="cliente" class="nav-link collapsed" [routerLink]="['./pedidos']" data-bs-toggle="collapse"
             data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
             <i class="left-icon-nav bi bi-bag-check-fill"></i>
             Mis pedidos
@@ -67,11 +67,11 @@
           </a>
 
           <div #sub_blog class="nav-sublink d-none">
-            <a class="nav-link collapsed" [routerLink]="['/portal/all_posts']" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" [routerLink]="['./all_posts']" data-bs-toggle="collapse"
               data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
               Todos los posts
             </a>
-            <a class="nav-link collapsed" [routerLink]="['/portal/edit_post']" data-bs-toggle="collapse"
+            <a class="nav-link collapsed" [routerLink]="['./edit_post']" data-bs-toggle="collapse"
               data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
               Agregar un post
             </a>

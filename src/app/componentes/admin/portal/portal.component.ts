@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { PeticionesService } from 'src/app/services/requests/peticiones.service';
 
@@ -12,7 +12,7 @@ export class PortalComponent implements OnInit {
   admin=false
   cliente =false
 
-  constructor(private service:PeticionesService,private router:Router,private cookieService:CookieService) { }
+  constructor(private service:PeticionesService,private router:Router,private cookieService:CookieService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     document.getElementsByTagName('navbar')[0].classList.add("d-none")
@@ -44,11 +44,11 @@ export class PortalComponent implements OnInit {
     this.service.peticionGet("http://localhost:8000/auth/user_credentials/",true).subscribe(res=>{
       if(res.group=="admin"){
         this.admin = true
-        this.router.navigate(["/portal/all_products"])
+        
       }
       else{
         this.cliente =true
-        this.router.navigate(["/portal/perfil"])
+        
       }
     },err=>{
       this.router.navigate(["/login"])

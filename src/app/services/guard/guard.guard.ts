@@ -16,16 +16,16 @@ export class GuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      // const url: string = state.url;
-      return true;
+      const url: string = state.url;
+      return this.check(url);
   }
 
   check(url:any):true|UrlTree{
-    let res: true|UrlTree = this.router.parseUrl('/login');
     if (this.cookieService.check("token")){
-      res = true
+      return true
+    }else{
+      return this.router.parseUrl('/login')
     }
-    return res
   }
   
 }
