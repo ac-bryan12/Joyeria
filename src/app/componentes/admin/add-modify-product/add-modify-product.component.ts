@@ -21,7 +21,7 @@ export class AddModifyProductComponent implements OnInit {
       nombre: this.form.control('', [Validators.required, Validators.minLength(3),Validators.maxLength(255),Validators.pattern('^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$')]),
       categoria: this.form.control('',[Validators.required]),
       precio: this.form.control('',[Validators.required,Validators.pattern('^[0-9]+([.][0-9]+)?$'),Validators.maxLength(12)]),
-      promocion: this.form.control('',[Validators.pattern('^[0-9]+([.][0-9]+)?$'),Validators.maxLength(12)]),
+      promocion: this.form.control('',[Validators.pattern('^[0-9]+([.][0-9]+)?$')]),
       image_url: this.form.control('',[Validators.required,Validators.maxLength(1024)]),
       stock: this.form.control('',[Validators.required])
     })
@@ -53,7 +53,6 @@ export class AddModifyProductComponent implements OnInit {
 
       let promocion = this.router.parseUrl(this.router.url).queryParams['promocion']
       this.product_form.get(["promocion"])?.setValue(promocion)
-      console.log(promocion)
       if(promocion == null){
         let checkbox: any = document.querySelector("input[type$='checkbox']")
         let input:any = document.querySelector("input[type$='checkbox'] + input")

@@ -68,12 +68,12 @@
                                 <input #checkbox type="checkbox" (change)="changePromocion(input_promocion,checkbox)"
                                     checked>
                                 <input #input_promocion class="ms-4 form-control disabled" type="text"
-                                    formControlName="Promocion" name="promocion">
+                                    formControlName="promocion" maxlength="8" name="promocion">
                             </span>
                         </div>
                     </div>
                     <span class="lead error"
-                        *ngIf="(formRef.submitted && product_form.get('promocion')?.hasError('required')) || product_form.get('promocion')?.hasError('maxlength') || product_form.get('promocion')?.hasError('pattern')">Ingrese
+                        *ngIf="product_form.get('promocion')?.hasError('pattern')">Ingrese
                         valor Promoción Válido
                     </span>
                 </div>
@@ -88,7 +88,7 @@
                         <input min="1" class="form-control" formControlName="stock" name="stock" id="lastNameLabel"
                             placeholder="Stock" type="number">
                     </div>
-                    <span class="lead error" *ngIf="(formRef.submitted )">Ingrese
+                    <span class="lead error" *ngIf="(formRef.submitted && product_form.get('stock')?.hasError('required'))">Ingrese
                         valor Stock Válido
                     </span>
                 </div>
