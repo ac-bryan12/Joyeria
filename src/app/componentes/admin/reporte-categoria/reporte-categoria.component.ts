@@ -19,7 +19,14 @@ export class ReporteCategoriaComponent implements OnInit {
     this.service.peticionGet("http://localhost:8000/api/articulos/categorias",true).subscribe(res=>{
       this.categorias = res
     },err=>{
-
+      alert(err.error.error)
+    })
+  }
+  crearReporte(){
+    this.service.peticionGet("http://localhost:8000/api/reportes",true).subscribe(res=>{
+      console.log(res)
+    },err=>{
+      alert(err.error.error)
     })
   }
 

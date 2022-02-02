@@ -1,5 +1,5 @@
 <div id="container" class="my-5">
-    <form id="reporte" name="reporte">
+    <form [formGroup]="busqueda" autocomplete="off" novalidate #formRef="ngForm" id="reporte" name="reporte">
         <h1 align='center' class="display-4 fw-bolder">Reportes</h1>
         <div id="tabla">
             <table class="sheet" align="center">
@@ -9,12 +9,12 @@
                     </tr>
                     <tr>
                         <td><label for="fechIniciho">Fecha inicio:</label></td>
-                        <td><input type="date" id="fechaInicio" style="width:150px">
+                        <td><input formControlName="fechaInicio" type="date" id="fechaInicio" style="width:150px">
                         </td>
                     </tr>
                     <tr>
                         <td><label for="fechaFin">Fecha Fin:</label></td>
-                        <td><input type="date" id="fechaFin" style="width:150px">
+                        <td><input formControlName="fechaFin" type="date" id="fechaFin" style="width:150px">
                         </td>
                     </tr>
 
@@ -26,23 +26,36 @@
         </div>
         <br>
         <div id="boton">
-            <button type="button" id="Aceptar" class="btn btn-outline-dark btn-block">
+            <button [disabled]="formRef.invalid" (click)="crearReporte(busqueda.value)" type="button" id="Aceptar"
+                class="btn btn-outline-dark btn-block">
                 Aceptar
             </button>
         </div>
 
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Campo 1</th>
-                    <th>Campo 2</th>
-                    <th>Campo 3</th>
-                    <th>Campo 4</th>
-                </tr>
-            </thead>
-            <tbody id="reportes">
-            </tbody>
-        </table>
     </form>
-
+    <div *ngIf="reporteGenerado" class="container reportes">
+        <div class="">
+            <h3 class="display-4 fw-bolder">Reporte Producto por fecha</h3>
+        </div>
+        <div class="table-responsive tabla-reporte">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Cantidad Producto</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody id="reportes">
+                    <tr *ngFor="let producto of lista">
+                        <th scope="row">{{producto.id}}</th>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.cantidad}}</td>
+                        <td>{{producto.cliente}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
