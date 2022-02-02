@@ -19,9 +19,9 @@
                 <td>{{post.titulo}}</td>
                 <td>{{post.autor}}</td>
                 <td>{{post.descripcion}}</td>
-                <td>
-                    <button value="{{post.id}}" (click)="modificarPost(post.id)"><i  class="bi bi-pencil-square"></i></button>
-                    <button value="{{post.id}}" (click)="eliminarPost(post.id)" ><i  class="bi bi-trash"></i></button>
+                <td class="d-flex">
+                    <button class="btn btn-dark me-1" value="{{post.id}}" (click)="modificarPost(post.id)"><i  class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-dark me-1" value="{{post.id}}" (click)="eliminarPost(post.id)" ><i  class="bi bi-trash"></i></button>
                 </td>
               </tr>
             </tbody>

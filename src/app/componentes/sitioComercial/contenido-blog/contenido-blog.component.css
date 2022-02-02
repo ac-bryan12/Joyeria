@@ -1,0 +1,9 @@
+#imagen{
+    width: 400px;
+    height: 300px; 
+}
+
+#contenedor-imagen{
+    display: flex;
+    justify-content: center;
+}

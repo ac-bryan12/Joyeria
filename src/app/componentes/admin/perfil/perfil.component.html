@@ -1,56 +1,91 @@
-
-<div class ="container">
-    <header class="bg-dark">
-        <div class="title text-center text-white">
-            <h1 class ="fw-bolder display-4">Perfil</h1>
-        </div> 
+<div class="container">
+    <header>
+        <div class="title text-center">
+            <h1 class="fw-bolder display-4">Perfil</h1>
+        </div>
     </header>
-    <div class="contenido">
-        <div class="botones">
-            <input class="btn btn-primary" type="button" value="Guardar información">
-            <input class="btn btn-primary" type="button" value="Eliminar cuenta">
+    <form #form [formGroup]='profile' #formRef="ngForm">
+        <div class="contenido">
+            <div class="botones">
+                <input (click)="actualizarDatos(profile.value)" class="btn btn-dark" type="button" value="Guardar información">
+                <input (click)="eliminarCuenta()" class="btn btn-dark" type="button" value="Eliminar cuenta">
+            </div>
+            <div class="datos">
+                <div class="col-md-6">
+                    <label class="form-label text-dark" for="firstNameLabel">Nombre<span
+                            class="text-danger"></span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                        </div>
+                        <input class="form-control" maxlength="150" id="firstNameLabel" placeholder="Nombres"
+                            type="text" name="nombre" formControlName="first_name">
+                    </div>
+                    <span class="text-danger lead error"
+                        *ngIf="profile.get('first_name')?.hasError('required') || profile.get('first_name')?.hasError('pattern')">Ingrese
+                        un nombre válido
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-dark" for="lastNameLabel">Apellido<span
+                            class="text-danger"></span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                        </div>
+                        <input class="form-control" maxlength="150" id="lastNameLabel" placeholder="Apellido"
+                            type="text" name="apellido" formControlName="last_name">
+                    </div>
+                    <span class="text-danger lead error"
+                        *ngIf="profile.get('last_name')?.hasError('required') || profile.get('last_name')?.hasError('pattern')">Ingrese
+                        un apellido válido
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-dark" for="lastNameLabel">Email<span
+                            class="text-danger"></span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                        </div>
+                        <input class="form-control" maxlength="254" id="lastNameLabel" placeholder="Email" type="text"
+                            name="email" formControlName="email">
+                    </div>
+                    <span class="text-danger lead error"
+                        *ngIf="profile.get('email')?.hasError('required') || profile.get('email')?.hasError('pattern') || profile.get('email')?.hasError('minlength')">Ingrese
+                        un correo válido
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-dark" for="direccion">Direccion<span
+                            class="text-danger"></span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                        </div>
+                        <input class="form-control" maxlength="254" id="direccion" placeholder="Direccion" type="text"
+                            name="direccion" formControlName='direccion'>
+                    </div>
+                    <span class="text-danger lead error"
+                        *ngIf="profile.get('direccion')?.hasError('required') || profile.get('direccion')?.hasError('pattern')">Ingrese
+                        un direccion válida
+                    </span>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label class="form-label text-dark" for="telefono">Telefono<span class="text-danger"></span></label>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                        </div>
+                        <input class="form-control" maxlength="10" id="telefono" placeholder="Telefono" type="text"
+                            name="telefono" formControlName='telefono'>
+                    </div>
+                    <span class="text-danger text-danger lead error"
+                        *ngIf="profile.get('telefono')?.hasError('required') || profile.get('telefono')?.hasError('pattern')">Ingrese
+                        un telefono válido
+                    </span>
+                </div>
+            </div>
         </div>
-        <div class="datos">
-            <div class ="col-md-6">
-                <label class="form-label text-dark" for="firstNameLabel">Nombre<span class="text-danger"></span></label>
-                <div class="input-group mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                    </div>
-                    <input class="form-control" id="firstNameLabel" placeholder="Nombres"
-                        type="text">
-                </div>
-            </div>
-            <div class ="col-md-6"> 
-                <label class="form-label text-dark" for="lastNameLabel">Apellido<span class="text-danger"></span></label>
-                <div class="input-group mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                    </div>
-                    <input class="form-control" id="lastNameLabel" placeholder="Apellido"
-                        type="text">
-                </div>
-            </div>
-            <div class ="col-md-6">
-                <label class="form-label text-dark" for="direccion">Direccion<span class="text-danger"></span></label>
-                <div class="input-group mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
-                    </div>
-                    <input class="form-control" id="direccion" placeholder="Direccion"
-                        type="text">
-                </div>
-            </div>
-            <div class ="col-md-6">
-                <label class="form-label text-dark" for="telefono">Telefono<span class="text-danger"></span></label>
-                <div class="input-group mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                    </div>
-                    <input class="form-control" id="telefono" placeholder="Telefono"
-                        type="text">
-                </div>
-            </div>
-        </div>
-    </div>
+    </form>
 </div>
