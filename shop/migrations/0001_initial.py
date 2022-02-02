@@ -18,7 +18,7 @@ def crear_pedido(data,user,fecha):
         pedido.usuario = user
         pedido.save()
         
-        pedido.fechaCompra
+        pedido.fechaCompra = fecha
         pedido.save()
         
         valor_total = 0

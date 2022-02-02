@@ -1,10 +1,13 @@
 from rest_framework.response import Response
+from graficos.serializers import DateSerializer
 from producto.models import Articulo, Categoria
-from rest_framework import permissions
+from rest_framework import permissions,status
 from rest_framework.views import APIView
 from producto.serializers import ArticuloSerializer
 from shop.models import Pedido
 from shop.mongodbs import NoSQLDB
+from rest_framework.authentication import TokenAuthentication
+
 
 # Create your views here.
 lista = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
@@ -56,3 +59,35 @@ class GraficoCompras(APIView):
             }
             results.append(res_mes)
         return Response({"data":results})
+
+
+class Reporte(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self,request):
+        serializer = DateSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            fechaInicio = serializer.validated_data['fechaInicio']
+            fechaFin = serializer.validated_data['fechaFin']
+            if(fechaFin>fechaInicio):
+                pedidos = Pedido.objects.filter(fechaCompra__range=[fechaInicio,fechaFin])
+                if pedidos.exists():
+                    noSQL = NoSQLDB()
+                    data = {}
+                    for pedido in pedidos:
+                        cantidad = 0
+                        detalle = noSQL.get_detalle(pedido.id)
+                        for item in detalle["items"]:
+                            cantidad = item["amount"]
+                            producto = Articulo.objects.filter(id=item["id"])[0]
+                            print("Producto: " + str(producto.id) + " Cantidad: " + str(cantidad))
+                            if producto.id not in data:
+                                data[producto.id]={"nombre":producto.nombre,"cantidad":cantidad,"cliente":pedido.usuario.username}
+                            else:
+                                print(data[producto.id]["cantidad"])
+                                print(cantidad)
+                                data[producto.id]["cantidad"] = data[producto.id]["cantidad"]+cantidad
+                    return Response({"data":data},status=status.HTTP_200_OK)
+                return Response({"error":"Revise que el rango de fechas"},status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error":"Revise que el rango de fechas"},status=status.HTTP_400_BAD_REQUEST)
