@@ -20,7 +20,14 @@ export class ContenidoBlogComponent implements OnInit {
 
   generarContenido(){
     this.service.peticionGet("http://localhost:8000/api/blog/publicacion/"+this.id).subscribe(res=>{
+      let title = document.getElementById("titulo") as HTMLElement
+      let autor = document.getElementById("autor") as HTMLElement
+      let img = document.getElementById("imagen") as HTMLElement
       let cont = document.getElementById("contenido") as HTMLElement
+
+      title.innerHTML = res.titulo
+      autor.innerHTML = "Autor: " + res.autor
+      img.setAttribute("src",res.img_portada)
       cont.innerHTML = atob(res.contenido)
     })
   }

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-4">
     <form [formGroup]="newPost" #formRef="ngForm" (ngSubmit)="guardar()" class="form-signin col-8">
 
         <!-- <div class="{{msg_d}} label-campos error-messages" id="user_invalid">
@@ -7,28 +7,28 @@
 
         <div class="input-group mb-4">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                <span class="input-group-text"><i class="bi bi-file-font-fill"></i></span>
             </div>
             <input formControlName="titulo" class="form-control" placeholder="Titulo" type="text" required autofocus>
         </div>
 
         <div class="input-group mb-4">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <span class="input-group-text"><i class="bi bi-fonts"></i></span>
             </div>
             <input formControlName="descripcion" class="form-control" placeholder="Descripción" required autofocus>
         </div>
 
         <div class="input-group mb-4">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <span class="input-group-text"><i class="bi bi-file-person"></i></span>
             </div>
             <input formControlName="autor" class="form-control" placeholder="Autor" required autofocus>
         </div>
 
         <div class="input-group mb-4">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <span class="input-group-text"><i class="bi bi-image"></i></span>
             </div>
             <input type="url" formControlName="img_portada" class="form-control" placeholder="Imagen de portada" required autofocus>
         </div>
@@ -42,8 +42,8 @@
             [placeholder]="'Type here...'"
             ></ngx-editor>
         </div>
-        <div class="logeo">
-            <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Guardar</button>
+        <div class="mt-4 text-center logeo">
+            <button class="btn btn-lg btn-dark btn-block mb-2" type="submit">Guardar</button>
         </div>
 
     </form>
