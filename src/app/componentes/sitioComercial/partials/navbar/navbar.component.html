@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                  <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/nosotros']">Sobre nosotros</a></li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li class="nav-item dropend">
+                              <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Todos los productos</a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'anillos'}">Anillos</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'aretes'}">Aretes</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'cadenas'}">Cadenas</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'joyeros'}">Joyeros</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'piercings_falsos'}">Piercings Falsos</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'pulseras'}">Pulseras</a></li>
+                                  <li><a class="dropdown-item" [routerLink] = "['/articulos']" [queryParams]="{name:'relojes'}">Relojes</a></li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/contactenos']">Contáctanos</a></li>
+                  <li class="nav-item"><a class="nav-link" [routerLink]="['/blog']">Blogs</a></li>
+              </ul>
+              <form class="d-flex">
+                  <a *ngIf="userLogged" class="btn btn-outline-dark" [routerLink]="['/portal']">
+                      <i class="bi bi-person-circle me-1"></i>
+                      Mi cuenta
+                  </a>
+                  <a *ngIf="!userLogged"  class="btn btn-outline-dark" [routerLink]="['/login']">
+                      <i class="bi-box-arrow-in-right me-1"></i>
+                      Iniciar Sesión
+                  </a>
+                  <a class="btn btn-outline-dark" [routerLink]="['/shopping-cart']">
+                      <i class="bi-cart-fill me-1"></i>
+                      Carrito
+                      <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                  </a>
+              </form>
+          </div>
+      </div>
+  </nav>

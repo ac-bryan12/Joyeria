@@ -1,0 +1,61 @@
+<div id="container" class="my-5">
+    <form [formGroup]="busqueda" autocomplete="off" novalidate #formRef="ngForm" id="reporte" name="reporte">
+        <h1 align='center' class="display-4 fw-bolder">Reportes</h1>
+        <div id="tabla">
+            <table class="sheet" align="center">
+                <tbody id="tablareporte">
+                    <tr>
+                        <td class="sheetheader" colspan="2">Criterios de búsqueda para el informe</td>
+                    </tr>
+                    <tr>
+                        <td><label for="fechIniciho">Fecha inicio:</label></td>
+                        <td><input formControlName="fechaInicio" type="date" id="fechaInicio" style="width:150px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="fechaFin">Fecha Fin:</label></td>
+                        <td><input formControlName="fechaFin" type="date" id="fechaFin" style="width:150px">
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div id="boton">
+            <button [disabled]="formRef.invalid" (click)="crearReporte(busqueda.value)" type="button" id="Aceptar"
+                class="btn btn-outline-dark btn-block">
+                Aceptar
+            </button>
+        </div>
+
+    </form>
+    <div *ngIf="reporteGenerado" class="container reportes">
+        <div class="">
+            <h3 class="display-4 fw-bolder">Reporte Producto por fecha</h3>
+        </div>
+        <div class="table-responsive tabla-reporte">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Cantidad Producto</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody id="reportes">
+                    <tr *ngFor="let producto of lista">
+                        <th scope="row">{{producto.id}}</th>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.cantidad}}</td>
+                        <td>{{producto.cliente}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<header class="bg-dark py-5" style="background: url(../../../../assets/imagenes/logos/fondo.png)">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Shop in By Coco</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Da un toque autentico a tu estilo</p>
+        </div>
+    </div>
+</header>
+<producto titulo="Promociones" url="http://localhost:8000/api/articulos?promocion=True"></producto>
+
+<div class="row w-100 row-cols-2 row-cols-md-3 justify-content-center">
+    <graficos class="col-mb-6" [titulo]="'Gráfico de productos en stock'" [url] ="'pie'"></graficos>
+    <graficos class="col-mb-6" [titulo]="'Gráfico referencial del precio de productos'" [url] ="'barras'"></graficos>
+</div>
+<div class="row w-100 row-cols-2 row-cols-md-3 justify-content-center">
+    <graficos class="col-mb-6" [titulo]="'Gráfico de compras por mes'" [url] ="'puntos'"></graficos>
+</div>
+
+
+
+

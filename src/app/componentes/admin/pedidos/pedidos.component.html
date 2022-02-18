@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="text-center">
+            <h1 class="mt-4     display-6 fw-bolder">Pedidos</h1>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha de compra</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let pedido of listpedidos">
+                <tr class="collapsed" aria-expanded="false" (click)="submenu(pedido.id)" data-bs-toggle="collapse"
+                    data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                    <th scope="row">{{pedido.id}}</th>
+                    <td>{{pedido.fechaCompra}}</td>
+                    <td>${{pedido.total}}</td>
+                    <td>Haga clic para ver su orden</td>
+                    <td>
+                        <button (click)="actualizarPedido(pedido.id)" class ="btn btn-primary">
+                            <i class = "bi bi-pencil-square">Actualizar pedido</i>
+                        </button>
+                        <button (click)="eliminarPedido(pedido.id)" class ="btn btn-primary">
+                            <i class = "bi bi-trash">Eliminar pedido</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr id="{{pedido.id}}" class="d-none ">
+                    <td colspan="5" class="table-responsive">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="text-light bg-dark">
+                                    Descripcion de los productos
+                                </h4>
+                            </div>
+                        </div>
+                        <table class="table table-hover tabla-interna">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Promocion</th>
+                                    <th>Categoria</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of pedido.items">
+                                    <th>{{item.id}}</th>
+                                    <td>{{item.nombre}}</td>
+                                    <td>${{item.precio}}</td>
+                                    <td *ngIf = "item.promocion !=null">${{item.promocion}}</td>
+                                    <td *ngIf = "item.promocion == null">------------</td>
+                                    <td>{{item.categoria.nombre}}</td>
+                                    <td >
+                                        <input class="cantidad {{pedido.id}}" #valor value ="{{item.amount}}" min=1 type="number" name ="{{item.id}}" 
+                                        (change)="revisarCantidad(valor,item.stock,item.amount)"></td>
+                                    <td>
+                                        <button (click)="eliminarProducto(item.id,pedido.items,pedido.id)" class ="btn btn-primary">
+                                            <i class = "bi bi-trash">Eliminar producto</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>    
+            </tbody>
+        </table>
+    </div>
+</div>

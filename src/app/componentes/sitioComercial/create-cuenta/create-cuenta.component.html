@@ -1,0 +1,74 @@
+<div class="wrapper bg-dark">
+    <div class="my-5 inner">
+        <div class="d-flex align-items-center image-holder">
+            <img src="../../../../assets/imagenes/logos/logoByCoco.png" alt="">
+        </div>
+        <form #form [formGroup]="createAccount" autocomplete="off" novalidate #formRef="ngForm"
+            (ngSubmit)="enviar(createAccount.value)">
+            <h3>Crea tu cuenta!</h3>
+            <div class="my-5 form-wrapper">
+                <span class="text-danger lead error"
+                    *ngIf="(formRef.submitted && createAccount.get('first_name')?.hasError('required')) || createAccount.get('first_name')?.hasError('pattern')">Ingrese
+                    un nombre válido
+                </span>
+                <input type="text" formControlName="first_name" placeholder="Nombres" class="form-control">
+                <i class="bi bi-person"></i>
+
+            </div>
+            <div class="my-5 form-wrapper">
+                <span class="text-danger lead error"
+                    *ngIf="(formRef.submitted && createAccount.get('last_name')?.hasError('required')) || createAccount.get('last_name')?.hasError('pattern')">Ingrese
+                    un apellido válido
+                </span>
+                <input type="text" formControlName="last_name" placeholder="Apellidos" class="form-control">
+                <i class="bi bi-person"></i>
+            </div>
+            <div class="my-5 form-wrapper">
+                <span class="text-danger lead error"
+                    *ngIf="(formRef.submitted && createAccount.get('email')?.hasError('required')) || createAccount.get('email')?.hasError('pattern')">Ingrese
+                    un email válido
+                </span>
+                <input type="text" formControlName="email" placeholder="Email Address" class="form-control">
+                <i class="bi bi-envelope"></i>
+            </div>
+            <div class="my-5 form-wrapper">
+                <span class="text-danger lead error"
+                    *ngIf="(formRef.submitted && createAccount.get('password')?.hasError('required')) || createAccount.get('password')?.hasError('pattern')">Ingrese
+                    contraseña que contenga:<br>
+                    ◆ Al menos 1 minuscula<br>
+                    ◆ Al menos 1 mayuscula<br>
+                    ◆ Al menos 1 numero<br>
+                    ◆ Al menos 1 caracter especial<br>
+                    ◆ Mínimo 8 caracteres
+                </span>
+                <input type="password" formControlName="password" placeholder="Password" class="form-control">
+                <i class="bi bi-lock"></i>
+            </div>
+            <!-- <div class="form-wrapper">
+                <input type="password" formControlName="confpassword" placeholder="Confirm Password" class="form-control">
+                <i class="bi bi-lock"></i>
+            </div> -->
+            <div class="my-5 form-wrapper">
+                <span class="text-danger lead error"
+                    *ngIf="(formRef.submitted && createAccount.get('direccion')?.hasError('required')) || createAccount.get('direccion')?.hasError('pattern')">Ingrese
+                    un direccion válido
+                </span>
+                <input type="text" formControlName="direccion" placeholder="Dirección" class="form-control">
+                <i class="bi bi-geo-alt"></i>
+            </div>
+            <div class="my-5 form-wrapper">
+                <span class="text-danger lead error"
+                    *ngIf="(formRef.submitted && createAccount.get('telefono')?.hasError('required')) || createAccount.get('telefono')?.hasError('pattern')">Ingrese
+                    un telefono válido
+                </span>
+                <input type="text" formControlName="telefono" placeholder="Teléfono" maxlength="10" class="form-control">
+                <i class="bi bi-telephone"></i>
+            </div>
+
+            <div class="text-center">
+                <input type="submit" [disabled]="formRef.invalid" class="mt-1 mb-3 btn btn-dark btn-block text-white"
+                    value="Registrar">
+            </div>
+        </form>
+    </div>
+</div>

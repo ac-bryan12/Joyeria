@@ -1,0 +1,21 @@
+.card-body{
+    display:flex;
+    justify-content: center;
+}
+
+.bi-person-circle{
+    font-size: 50px;
+}
+
+.input-group-text{
+    height: 47px;
+}
+
+.logeo{
+    display: flex;
+    flex-direction: column;
+}
+
+#login-container{
+    height: calc(100vh - 56px);
+}
